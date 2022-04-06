@@ -1,6 +1,6 @@
 # Geordle - the city guessing game
 
-  <p style="text-align:center">
+  <p align="center">
     <a href="https://github.com/medkamilmel/geordle">Browse Code</a>
     ·
     <a href="https://github.com/medkamilmel/geordle/issues">Report Bug</a>
@@ -16,7 +16,7 @@ It consists of a city guessing game, somewhere between [Wordle](https://www.nyti
 
 Link to the deployed app: [geordle.web.app](geordle.web.app).
 
-<p style="text-align:right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Built with
 * [Javascript](https://www.javascript.com/)
@@ -25,7 +25,7 @@ Link to the deployed app: [geordle.web.app](geordle.web.app).
 * [Firebase](https://firebase.google.com/)
 * [GeoDB API](https://rapidapi.com/wirefreethought/api/geodb-cities)
 
-<p style="text-align:right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## What has been done
 
@@ -39,7 +39,7 @@ The table listing guesses is implemented in `GameBoardView.js` and uses local da
 
 The basic search form view/presenter pair is implemented in `GuessFormView.js` and `GuessFormPresenter.js`.
 
-<p style="text-align:right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## What's left to do
 
@@ -53,7 +53,7 @@ The `GuessForm` needs to fetch the city information from the API and add it to t
 
 We should implement search suggestions in the `GuessForm` for a better user experience.
 
-<p style="text-align:right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Contact
 
@@ -63,4 +63,4 @@ Thomas Srour - [srour@kth.se](mailto:srour@kth.se)
 
 Kamil Mellouk - [mellouk@kth.se](mailto:mellouk@kth.se)
 
-<p style="text-align:right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
