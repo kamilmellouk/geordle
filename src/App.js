@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import GameModel from './GameModel.js';
 
-import {getCityDetails, getDistance} from "./citySource.js"
+import {getCityDetails, getCityByName, getDistance} from "./citySource.js"
 import resolvePromise from "./resolvePromise";
 import data from "./data.json"
 
 import GameBoardView from './views/GameBoardView';
+import GuessFormView from './views/GuessFormView';
+
+import GuessForm from './reactjs/GuessFormPresenter';
 
 const App = () => {
-  const [target, setTarget] = useState()
+  const model = new GameModel()
 
+  const [target, setTarget] = useState()
   useEffect(() => {
     getCityDetails('Q504125').then(c => setTarget(c.data))
   }, [])
@@ -19,7 +23,7 @@ const App = () => {
     <div className="container">
       {target? 
       (<div>
-        <p>Mystery city:</p>
+        <p> Mystery city:</p>
         <p> City: {target.name} </p>
         <p> Country: {target.country} </p>
         <p> Population: {target.population} </p>
@@ -27,6 +31,7 @@ const App = () => {
         <p> Longitude: {target.longitude.toFixed(2)} </p>
       </div>) 
       : null}
+      <GuessForm model={model}/>
       <GameBoardView guesses={data} target={target}/>
     </div>
   );
