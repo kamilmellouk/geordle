@@ -9,12 +9,11 @@ function  APICall(endpoint, params) {
     return fetch(BASE_URL + endpoint + params, {  // object literal
         "method": "GET",              // HTTP method
         "headers": {                  // HTTP headers, also object literal
-            "X-RapidAPI-Key": API_KEY,
             "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
+            "X-RapidAPI-Key": API_KEY,
         }
     }
     ).then(treatHTTPResponseACB);
-    
 }
 
 function getCityDetails(id) {
@@ -24,6 +23,13 @@ function getCityDetails(id) {
     );
 }
 
+function getCityByName(name) {
+    return APICall(
+        "cities?namePrefix=",
+        name + "&sort=-population"
+    )
+}
+
 function getDistance(fromId, toId) {
     return APICall(
         "cities/",
@@ -31,4 +37,4 @@ function getDistance(fromId, toId) {
     );
 }
 
-export {getCityDetails, getDistance};
+export {getCityDetails, getCityByName, getDistance};

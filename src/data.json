@@ -1,0 +1,64 @@
+[
+    {
+        "id":123214,
+        "wikiDataId":"Q60",
+        "type":"CITY",
+        "city":"New York City",
+        "name":"New York City",
+        "country":"United States of America",
+        "countryCode":"US",
+        "region":"New York",
+        "regionCode":"NY",
+        "elevationMeters":10,
+        "latitude":40.71427,
+        "longitude":-74.00597,
+        "population":8175133,
+        "timezone":"America__New_York",
+        "deleted":false
+    },
+
+    {
+        "id":3020322,
+        "wikiDataId":"Q1754",
+        "type":"CITY",
+        "city":"Stockholm",
+        "name":"Stockholm",
+        "country":"Sweden",
+        "countryCode":"SE",
+        "region":"Stockholm County",
+        "regionCode":"AB",
+        "latitude":59.329444444,
+        "longitude":18.068611111,
+        "population":975819
+    },
+
+    {
+        "id":153701,
+        "wikiDataId":"Q7903",
+        "type":"CITY",
+        "city":"Casablanca",
+        "name":"Casablanca",
+        "country":"Morocco",
+        "countryCode":"MA",
+        "region":"Casablanca-Settat",
+        "regionCode":"06",
+        "latitude":33.599166666,
+        "longitude":-7.62,
+        "population":3499000
+    },
+
+    {
+        "id":10996,
+        "wikiDataId":"Q807",
+        "type":"CITY",
+        "city":"Lausanne",
+        "name":"Lausanne",
+        "country":"Switzerland",
+        "countryCode":"CH",
+        "region":"Canton of Vaud",
+        "regionCode":"VD",
+        "latitude":46.533333333,
+        "longitude":6.633333333,
+        "population":139111
+    }
+]

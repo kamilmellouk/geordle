@@ -12,17 +12,21 @@ class GameModel {
 
         this.currentGuessPromiseState = {}
         function notifyACB() { console.log("thawa"); }
-        console.log(resolvePromise(getCityDetails(this.target), this.currentGuessPromiseState, notifyACB))
     }
 
     newGame() {
         // TODO: reset currentGuess, remainingGuesses and randomly choose target
+        this.currentGuess = 0
+        this.remainingGuesses = this.nrOfGuesses
+        this.guesses = []
  
     }
 
     guess(name) {
         // TODO: when the user makes a guess, look for the correponding city id, and update the model parameters
     }
+
+
 
 }
 
