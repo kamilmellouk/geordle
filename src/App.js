@@ -23,8 +23,8 @@ const App = () => {
         <p> City: {target.name} </p>
         <p> Country: {target.country} </p>
         <p> Population: {target.population} </p>
-        <p> Latitude: {target.latitude.toFixed(4)} </p>
-        <p> Longitude: {target.longitude.toFixed(4)} </p>
+        <p> Latitude: {target.latitude.toFixed(2)} </p>
+        <p> Longitude: {target.longitude.toFixed(2)} </p>
       </div>) 
       : null}
       <GameBoardView guesses={data} target={target}/>

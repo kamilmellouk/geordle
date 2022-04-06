@@ -1,7 +1,6 @@
 
 export default function GameBoardView(props) {
 
-
     return (
         <div id="game-board">
             { renderGuesses(props, props.guesses, props.target) }
@@ -17,8 +16,8 @@ function renderGuesses(props, guesses, target) {
                 <td> {guess.name} </td>
                 <td> {guess.country} </td>
                 <td> {guess.population} </td>
-                <td> {guess.latitude.toFixed(4)} </td>
-                <td> {guess.longitude.toFixed(4)} </td>
+                <td> {guess.latitude.toFixed(2)} </td>
+                <td> {guess.longitude.toFixed(2)} </td>
             </tr>
         );
     }
