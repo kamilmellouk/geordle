@@ -1,6 +1,3 @@
-import {getCityDetails, getDistance} from "./citySource.js"
-import resolvePromise from "./resolvePromise";
-
 class GameModel {
     
     constructor() {
@@ -24,9 +21,6 @@ class GameModel {
         this.guesses = [...this.guesses, city]
         this.remainingGuesses -= 1
     }
-
-
-
 }
 
 export default GameModel;
