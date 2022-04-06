@@ -14,6 +14,10 @@ This project assignment was was implemented by group 5 for the course [DH2642 - 
 
 It consists of a city guessing game, somewhere between [Wordle](https://www.nytimes.com/games/wordle/index.html) and [GeoGuessr](https://www.geoguessr.com/): the user needs to find a mystery city using a limited number of guesses. Each new guess gives the player information on how the city he guessed compares to the one he needs to find.
 
+Link to the deployed app: [geordle.web.app](geordle.web.app).
+
+<p style="text-align:right">(<a href="#top">back to top</a>)</p>
+
 ## Built with
 * [Javascript](https://www.javascript.com/)
 * [React](https://reactjs.org/)
@@ -21,6 +25,7 @@ It consists of a city guessing game, somewhere between [Wordle](https://www.nyti
 * [Firebase](https://firebase.google.com/)
 * [GeoDB API](https://rapidapi.com/wirefreethought/api/geodb-cities)
 
+<p style="text-align:right">(<a href="#top">back to top</a>)</p>
 
 ## What has been done
 
@@ -34,6 +39,8 @@ The table listing guesses is implemented in `GameBoardView.js` and uses local da
 
 The basic search form view/presenter pair is implemented in `GuessFormView.js` and `GuessFormPresenter.js`.
 
+<p style="text-align:right">(<a href="#top">back to top</a>)</p>
+
 ## What's left to do
 
 The free plan for the API we're using limits us to only 1'000 calls/day and 1 call/second which is really limiting, especially since we want to implement search suggestions which requires making many successive calls. We need to either subscribe to the premium plan or look for another API to use.
@@ -46,6 +53,8 @@ The `GuessForm` needs to fetch the city information from the API and add it to t
 
 We should implement search suggestions in the `GuessForm` for a better user experience.
 
+<p style="text-align:right">(<a href="#top">back to top</a>)</p>
+
 ## Contact
 
 Mehdi Mezghani - [mezghani@kth.se](mailto:mezghani@kth.se)
@@ -53,3 +62,5 @@ Mehdi Mezghani - [mezghani@kth.se](mailto:mezghani@kth.se)
 Thomas Srour - [srour@kth.se](mailto:srour@kth.se)
 
 Kamil Mellouk - [mellouk@kth.se](mailto:mellouk@kth.se)
+
+<p style="text-align:right">(<a href="#top">back to top</a>)</p>
