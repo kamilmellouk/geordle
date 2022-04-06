@@ -1,5 +1,4 @@
 export default function GuessForm(props) {
-
     function inputACB(event) {
         props.setSearchText(event.target.value)
     }
@@ -8,9 +7,9 @@ export default function GuessForm(props) {
     }
 
     return (
-        <div>
-            <input onChange={inputACB}/>
+        <div class="center">
+            <input onChange={inputACB} />
             <button onClick={guessACB}>Guess</button>
         </div>
-    );
+    )
 }

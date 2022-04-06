@@ -1,37 +1,38 @@
-
 export default function GameBoardView(props) {
-
     return (
         <div id="game-board">
-            { renderGuesses(props, props.guesses, props.target) }
+            {renderGuesses(props, props.guesses, props.target)}
         </div>
-    );
+    )
 }
 
 function renderGuesses(props, guesses, target) {
-
     function guessRowCB(guess) {
         return (
-            <tr key={guess.id}>
-                <td> {guess.name} </td>
-                <td> {guess.country} </td>
-                <td> {guess.population} </td>
-                <td> {guess.latitude.toFixed(2)} </td>
-                <td> {guess.longitude.toFixed(2)} </td>
+            <tr class="guessestr" key={guess.id}>
+                <td class="guessestdname"> {guess.name} </td>
+                <td class="guessestd"> {guess.country} </td>
+                <td class="guessestd"> {guess.population} </td>
+                <td class="guessestd"> {guess.latitude.toFixed(2)} </td>
+                <td class="guessestd"> {guess.longitude.toFixed(2)} </td>
             </tr>
-        );
+        )
     }
 
     return (
         <div>
-            <table>
-            <thead>
-                <tr><th>Name</th><th>Country</th><th>Population</th><th>Latitude</th><th>Longitude</th></tr>
+            <table class="guesses">
+                <thead>
+                    <tr>
+                        <th class="guessesthname">Name</th>
+                        <th class="guessesth">Country</th>
+                        <th class="guessesth">Population</th>
+                        <th class="guessesth">Latitude</th>
+                        <th class="guessesth">Longitude</th>
+                    </tr>
                 </thead>
-                <tbody>
-                    { guesses.map(guessRowCB) }
-                </tbody>
+                <tbody>{guesses.map(guessRowCB)}</tbody>
             </table>
         </div>
-    );
+    )
 }
