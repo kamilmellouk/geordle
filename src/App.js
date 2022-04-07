@@ -14,7 +14,7 @@ const App = () => {
 
     const [target, setTarget] = useState()
     useEffect(() => {
-        getCityDetails("Q504125").then((c) => setTarget(c.data))
+        getCityDetails("Q1748").then((c) => setTarget(c.data))
     }, [])
 
     return (
