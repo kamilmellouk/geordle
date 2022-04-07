@@ -27,6 +27,16 @@ Link to the deployed app: [geordle.web.app](https://www.geordle.web.app).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Project structure
+
+* `App.js` handles the main page.
+* `GameModel.js` models an instance of the game.
+* `citySource.js` provides functions that make API calls.
+* `utilities.js` provides some utility functions.
+* `data.json` contains local city data (initially fetched from the API) used for prototyping.
+* `views/` contains views for the game board and the guess form.
+* `reactjs/` contains the presenter for the game board.
+
 ## What has been done
 
 We intially started implementing the project using vue and reusing parts of the tutorial labs, but we quickly got lost in trying to make the dependencies work. We then decided to start from scratch and chose to use React. We set up the project skeleton using `create-react-app`.
@@ -39,19 +49,23 @@ The table listing guesses is implemented in `GameBoardView.js` and uses local da
 
 The basic search form view/presenter pair is implemented in `GuessFormView.js` and `GuessFormPresenter.js`.
 
+The `GameBoardView` visually indicates how the guesses compare with the mystery city, with arrows/colors that change directions/shape depending on whether the city attribute is lower or higher than for the mystery city.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## What's left to do
 
 The free plan for the API we're using limits us to only 1'000 calls/day and 1 call/second which is really limiting, especially since we want to implement search suggestions which requires making many successive calls. We need to either subscribe to the premium plan or look for another API to use.
 
-The `GameBoardView` needs to visually indicate how the guesses compare with the mystery city, with arrows/colors that change directions/shape depending on whether the city attribute is lower or higher than for the guess city.
-
 We clearly need more relevant city attributes to display, e.g. time zone (to find in the API or to compute from coordinates)
 
 The `GuessForm` needs to fetch the city information from the API and add it to the `GameModel`'s list of guesses, which has to then trigger the `GameBoard` (which needs a presenter) to re-render.
 
 We should implement search suggestions in the `GuessForm` for a better user experience.
+
+We should find a way to randomly choose mystery cities, and set a lower bound to their population so that the game is not impossible.
+
+We should implement a login system, so that we can display scoreboards and statistics on how the player performs (e.g. average number of guesses).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
