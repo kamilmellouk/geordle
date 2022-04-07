@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react"
 import "./App.css"
 import GameModel from "./GameModel.js"
 
-import { getCityDetails, getCityByName, getDistance } from "./citySource.js"
-import resolvePromise from "./resolvePromise"
+import { getCityDetails } from "./citySource.js"
 import data from "./data.json"
 
 import GameBoardView from "./views/GameBoardView"
-import GuessFormView from "./views/GuessFormView"
 
 import GuessForm from "./reactjs/GuessFormPresenter"
 
@@ -30,7 +28,7 @@ const App = () => {
                     <p> Latitude: {target.latitude.toFixed(2)} </p>
                     <p> Longitude: {target.longitude.toFixed(2)} </p>
                 </div>
-            ) : null}
+            ) : "no data"}
             <GuessForm model={model} />
             <br />
             <br />

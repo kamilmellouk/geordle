@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Geordle - the city guessing game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <p align="center">
+    <a href="https://github.com/medkamilmel/geordle">Browse Code</a>
+    ·
+    <a href="https://github.com/medkamilmel/geordle/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/medkamilmel/geordle/issues">Request Feature</a>
+  </p>
 
-## Available Scripts
+## About the project
 
-In the project directory, you can run:
+This project assignment was was implemented by group 5 for the course [DH2642 - Interaction Programming and the Dynamic Web](https://www.kth.se/student/kurser/kurs/DH2642?l=en) at [KTH Royal Institute of Technology](kth.se).
 
-### `npm start`
+It consists of a city guessing game, somewhere between [Wordle](https://www.nytimes.com/games/wordle/index.html) and [GeoGuessr](https://www.geoguessr.com/): the user needs to find a mystery city using a limited number of guesses. Each new guess gives the player information on how the city he guessed compares to the one he needs to find.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Link to the deployed app: [geordle.web.app](geordle.web.app).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `npm test`
+## Built with
+* [Javascript](https://www.javascript.com/)
+* [React](https://reactjs.org/)
+* [npm](https://www.npmjs.com/)
+* [Firebase](https://firebase.google.com/)
+* [GeoDB API](https://rapidapi.com/wirefreethought/api/geodb-cities)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `npm run build`
+## What has been done
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We intially started implementing the project using vue and reusing parts of the tutorial labs, but we quickly got lost in trying to make the dependencies work. We then decided to start from scratch and chose to use React. We set up the project skeleton using `create-react-app`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The API config is done, and the calls are handled in `citySource.js`. We are limited in the frequency at which we can make API calls (see next section for more details), hence why the data for only one city is displayed on the website.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We built a first draft for `GameModel.js`.
 
-### `npm run eject`
+The table listing guesses is implemented in `GameBoardView.js` and uses local data (`data.json`) for now.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The basic search form view/presenter pair is implemented in `GuessFormView.js` and `GuessFormPresenter.js`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## What's left to do
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The free plan for the API we're using limits us to only 1'000 calls/day and 1 call/second which is really limiting, especially since we want to implement search suggestions which requires making many successive calls. We need to either subscribe to the premium plan or look for another API to use.
 
-## Learn More
+The `GameBoardView` needs to visually indicate how the guesses compare with the mystery city, with arrows/colors that change directions/shape depending on whether the city attribute is lower or higher than for the guess city.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+We clearly need more relevant city attributes to display, e.g. time zone (to find in the API or to compute from coordinates)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The `GuessForm` needs to fetch the city information from the API and add it to the `GameModel`'s list of guesses, which has to then trigger the `GameBoard` (which needs a presenter) to re-render.
 
-### Code Splitting
+We should implement search suggestions in the `GuessForm` for a better user experience.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### Analyzing the Bundle Size
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Mehdi Mezghani - [mezghani@kth.se](mailto:mezghani@kth.se)
 
-### Making a Progressive Web App
+Thomas Srour - [srour@kth.se](mailto:srour@kth.se)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Kamil Mellouk - [mellouk@kth.se](mailto:mellouk@kth.se)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="right">(<a href="#top">back to top</a>)</p>
