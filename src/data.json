@@ -60,5 +60,20 @@
         "latitude":46.533333333,
         "longitude":6.633333333,
         "population":139111
+    },
+
+    {
+        "id":26736,
+        "wikiDataId":"Q154897",
+        "type":"CITY",
+        "city":"Aabenraa",
+        "name":"Aabenraa",
+        "country":"Denmark",
+        "countryCode":"DK",
+        "region":"Southern Denmark",
+        "regionCode":"83",
+        "latitude":55.044444444,
+        "longitude":9.418055555,
+        "population":15967
     }
 ]
