@@ -7,14 +7,22 @@ export default function GameBoardView(props) {
 }
 
 function renderGuesses(props, guesses, target) {
+    function numericalProperty (guessProperty, targetProperty, higherSymbol, lowerSymbol) {
+        return (
+           <td class="guessestd">  <span  style= {target== undefined ?  {color: 'black'} : guessProperty<=targetProperty? { color: 'green' }: { color: 'red' }}>
+                {target== undefined ?  "." : guessProperty<=targetProperty? higherSymbol: lowerSymbol}</span> <span>{guessProperty} </span></td>
+        )
+    }
+
+    
     function guessRowCB(guess) {
         return (
             <tr class="guessestr" key={guess.id}>
-                <td class="guessestdname"> {guess.name} </td>
-                <td class="guessestd"> {guess.country} </td>
-                <td class="guessestd"> {guess.population} </td>
-                <td class="guessestd"> {guess.latitude.toFixed(2)} </td>
-                <td class="guessestd"> {guess.longitude.toFixed(2)} </td>
+                <td class="guessestdname" > {guess.name} </td>
+                <td class="guessestd" style= {target== undefined ?  {color: 'black'} : guess.country===target.country? { color: 'green' }: { color: 'red' }}> {guess.country} </td>
+                {numericalProperty(guess.population, target== undefined? target :target.population, "↑", "↓")}
+                {numericalProperty(guess.latitude.toFixed(2), target== undefined? target :target.latitude.toFixed(2), "↑", "↓")}
+                {numericalProperty(guess.longitude.toFixed(2), target== undefined? target :target.longitude.toFixed(2), "→", "←")}
             </tr>
         )
     }
