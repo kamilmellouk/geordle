@@ -14,7 +14,7 @@ This project assignment was was implemented by group 5 for the course [DH2642 - 
 
 It consists of a city guessing game, somewhere between [Wordle](https://www.nytimes.com/games/wordle/index.html) and [GeoGuessr](https://www.geoguessr.com/): the user needs to find a mystery city using a limited number of guesses. Each new guess gives the player information on how the city he guessed compares to the one he needs to find.
 
-Link to the deployed app: [geordle.web.app](geordle.web.app).
+Link to the deployed app: [geordle.web.app](https://www.geordle.web.app).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
