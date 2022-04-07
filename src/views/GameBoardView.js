@@ -23,11 +23,11 @@ function renderGuesses(props, guesses, target) {
         return (
             <tr class="guessestr" key={guess.id}>
                 <td class="guessestdname" > {guess.name} </td>
-                <td class="guessestd" style= {target== undefined ?  {color: 'black'} : guess.country===target.country? { color: 'green' }: { color: 'red' }}> {guess.country} </td>
+                <td class="guessesDist" style= {target== undefined ?  {color: 'black'} : guess.country===target.country? { backgroundColor: 'green' }: { backgroundColor: 'red' }}> {guess.country} </td>
                 {numericalProperty(guess.population, target== undefined? target :target.population, "↑", "↓")}
                 {numericalProperty(guess.latitude.toFixed(2), target== undefined? target :target.latitude.toFixed(2), "↑", "↓")}
                 {numericalProperty(guess.longitude.toFixed(2), target== undefined? target :target.longitude.toFixed(2), "→", "←")}
-                <td class="guessestd"  style={{color : getColor(dist)}}> {dist} </td>
+                <td class="guessesDist"  style={{backgroundColor : getColor(dist)}}> {dist} </td>
             </tr>
         )
     }
