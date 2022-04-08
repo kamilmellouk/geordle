@@ -20,12 +20,17 @@ const App = () => {
     return (
         <div className="container" style={{}}>
             <div class="header">
-                <h1>Geordle</h1>
-                <p>The city guessing game</p>
+                <h1 style={{ color: "blue" }}>Geordle</h1>
+                <p style={{ color: "green" }}>The city guessing game</p>
             </div>
-            <p>The goal of this game is to find a mystery city using a limited number of guesses. Each new guess you make gives information on how the city you guessed compares to the one you need to find.</p>
+            <div class="body">
+                The goal of this game is to find a mystery city using a limited
+                number of guesses. Each new guess you make gives information on
+                how the city you guessed compares to the one you need to find.
+            </div>
+            <br />
             <GuessForm model={model} />
-            <br/>
+            <br />
             <GameBoardView guesses={data} target={target} />
             {target ? (
                 <div>
@@ -36,7 +41,9 @@ const App = () => {
                     <p> Latitude: {target.latitude.toFixed(2)} </p>
                     <p> Longitude: {target.longitude.toFixed(2)} </p>
                 </div>
-            ) : "no data"}
+            ) : (
+                "no data"
+            )}
         </div>
     )
 }
