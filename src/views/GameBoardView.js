@@ -9,17 +9,14 @@ function renderGuesses(props) {
         guessProperty,
         targetProperty,
         higherSymbol,
-        lowerSymbol
+        lowerSymbol,
+        color
     ) {
-        console.log(guessProperty)
         return (
             <td
                 class="guessestd"
                 style={{
-                    backgroundColor: getColorLonLat(
-                        guessProperty,
-                        targetProperty
-                    ),
+                    backgroundColor: color,
                 }}
             >
                 {" "}
@@ -43,46 +40,7 @@ function renderGuesses(props) {
         )
     }
 
-    function numericalProperty2(
-        guessProperty,
-        targetProperty,
-        higherSymbol,
-        lowerSymbol
-    ) {
-        console.log(guessProperty)
-        return (
-            <td
-                class="guessestd"
-                style={{
-                    backgroundColor: getColorPop(guessProperty, targetProperty),
-                }}
-            >
-                {" "}
-                <span
-                    style={
-                        props.target == undefined
-                            ? { color: "black" }
-                            : guessProperty <= targetProperty
-                            ? { color: "black" }
-                            : { color: "black" }
-                    }
-                >
-                    {props.target == undefined
-                        ? "."
-                        : guessProperty <= targetProperty
-                        ? higherSymbol
-                        : lowerSymbol}
-                </span>{" "}
-                <span>
-                    {guessProperty.toLocaleString(
-                        undefined // leave undefined to use the visitor's browser
-                        // locale or a string like 'en-US' to override it.
-                    )}{" "}
-                </span>
-            </td>
-        )
-    }
-
+    
     function guessRowCB(guess) {
         var dist = distance(
             guess.longitude,
@@ -106,13 +64,18 @@ function renderGuesses(props) {
                     {" "}
                     {guess.country}{" "}
                 </td>
-                {numericalProperty2(
+                {numericalProperty(
                     guess.population,
                     props.target == undefined
                         ? props.target
                         : props.target.population,
                     "↑",
-                    "↓"
+                    "↓",
+                    getColorPop(guess.population, 
+                        props.target == undefined
+                        ? props.target
+                        : props.target.population)
+
                 )}
                 {numericalProperty(
                     guess.latitude.toFixed(2),
@@ -120,7 +83,13 @@ function renderGuesses(props) {
                         ? props.target
                         : props.target.latitude.toFixed(2),
                     "↑",
-                    "↓"
+                    "↓",
+                    getColorLonLat(
+                        guess.latitude,
+                        props.target == undefined
+                        ? props.target
+                        : props.target.latitude.toFixed(2)
+                    )
                 )}
                 {numericalProperty(
                     guess.longitude.toFixed(2),
@@ -128,7 +97,13 @@ function renderGuesses(props) {
                         ? props.target
                         : props.target.longitude.toFixed(2),
                     "→",
-                    "←"
+                    "←",
+                    getColorLonLat(
+                        guess.longitude,
+                        props.target == undefined
+                        ? props.target
+                        : props.target.longitude.toFixed(2)
+                    )
                 )}
                 <td
                     class="guessestd"
