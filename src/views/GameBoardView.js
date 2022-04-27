@@ -1,12 +1,10 @@
-import { distance, getColor, getColorPop, getColorLonLat } from "../utilities"
+import { distance, getColor, maxDiffLongLat, maxDistance, maxDiffPop } from "../utilities"
 
 export default function GameBoardView(props) {
     return <div id="game-board">{renderGuesses(props)}</div>
 }
 
-const maxDistance = 7000
-const maxDiffLongLat = 7
-const maxDiffPop = 1000000
+
 
 function renderGuesses(props) {
     function numericalProperty(

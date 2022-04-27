@@ -1,3 +1,7 @@
+const maxDistance = 7000
+const maxDiffLongLat = 7
+const maxDiffPop = 1000000
+
 //gives the distance between two cities using their latitude and longitude
 function distance(logitude1, latitude1, longitude2, latitude2) {
     //Conversion to Radians
@@ -38,4 +42,4 @@ function clip(v) {
     } else return Math.min(v, 1)
 }
 
-export { distance, getColor }
+export { distance, getColor, maxDiffLongLat, maxDistance, maxDiffPop}
