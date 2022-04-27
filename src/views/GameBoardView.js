@@ -4,6 +4,10 @@ export default function GameBoardView(props) {
     return <div id="game-board">{renderGuesses(props)}</div>
 }
 
+const maxDistance = 7000
+const maxDiffLongLat = 7
+const maxDiffPop = 1000000
+
 function renderGuesses(props) {
     function numericalProperty(
         guessProperty,
@@ -48,6 +52,7 @@ function renderGuesses(props) {
             props.target == undefined ? 0 : props.target.longitude,
             props.target == undefined ? 0 : props.target.latitude
         ).toFixed(0)
+
         return (
             <tr class="guessestr" key={guess.id}>
                 <td class="guessestdname"> {guess.name} </td>
@@ -71,10 +76,10 @@ function renderGuesses(props) {
                         : props.target.population,
                     "↑",
                     "↓",
-                    getColorPop(guess.population, 
-                        props.target == undefined
-                        ? props.target
-                        : props.target.population)
+                    getColor(guess.population -
+                        ( props.target == undefined
+                            ? props.target
+                            : props.target.population), maxDiffPop)
 
                 )}
                 {numericalProperty(
@@ -84,11 +89,11 @@ function renderGuesses(props) {
                         : props.target.latitude.toFixed(2),
                     "↑",
                     "↓",
-                    getColorLonLat(
-                        guess.latitude,
-                        props.target == undefined
+                    getColor(
+                        guess.latitude -
+                        (props.target == undefined
                         ? props.target
-                        : props.target.latitude.toFixed(2)
+                        : props.target.latitude.toFixed(2)), maxDiffLongLat
                     )
                 )}
                 {numericalProperty(
@@ -98,16 +103,16 @@ function renderGuesses(props) {
                         : props.target.longitude.toFixed(2),
                     "→",
                     "←",
-                    getColorLonLat(
-                        guess.longitude,
-                        props.target == undefined
+                    getColor(
+                        guess.longitude -
+                        (props.target == undefined
                         ? props.target
-                        : props.target.longitude.toFixed(2)
+                        : props.target.longitude.toFixed(2)), maxDiffLongLat
                     )
                 )}
                 <td
                     class="guessestd"
-                    style={{ backgroundColor: getColor(dist) }}
+                    style={{ backgroundColor: getColor(dist, maxDistance) }}
                 >
                     {" "}
                     {dist}

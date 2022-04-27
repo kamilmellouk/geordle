@@ -23,32 +23,14 @@ function distance(logitude1, latitude1, longitude2, latitude2) {
 }
 
 //Choose a color between red and green given a distance, i.e, the closer the greener
-function getColor(distance) {
-    const maxDistance = 7000
-    var value = distance / maxDistance
+function getColor(tarGuessDiff, MaxDiff) {
+    var value = clip(Math.abs(tarGuessDiff) / MaxDiff)
     //value from 0 to 1
     var hue = ((1 - value) * 120).toString(10)
     return ["hsl(", hue, ",100%,50%)"].join("")
 }
 
-function getColorPop(pop, targetPop) {
-    var value = clip(Math.abs((pop - targetPop) / 1000000))
-    // if (value <= 0 || value >= 1) {
-    //     return "white"
-    // }
-    //else
-    var hue = ((1 - value) * 120).toString(10)
-    return ["hsl(", hue, ",100%,50%)"].join("")
-}
 
-function getColorLonLat(lonLat, targetLonLat) {
-    var value = clip(Math.abs((lonLat - targetLonLat) / 7))
-    // if (value <= 0 || value >= 1) {
-    //     return "white"
-    // } else
-    var hue = ((1 - value) * 120).toString(10)
-    return ["hsl(", hue, ",100%,50%)"].join("")
-}
 
 function clip(v) {
     if (v <= 0) {
@@ -56,4 +38,4 @@ function clip(v) {
     } else return Math.min(v, 1)
 }
 
-export { distance, getColor, getColorPop, getColorLonLat }
+export { distance, getColor }
