@@ -10,15 +10,20 @@ import GameBoardView from "./views/GameBoardView"
 import GuessForm from "./reactjs/GuessFormPresenter"
 
 const App = () => {
-	const model = new GameModel()
+    const model = new GameModel()
 
-	const [cities, setCities] = useState([])
+    const [target, setTarget] = useState()
+    useEffect(() => {
+        getCityDetails("Q1748").then((c) => setTarget(c.data))
+    }, [])
+
+    const [cities, setCities] = useState([])
 
 	const [input, setInput] = useState("")
 
 	const [filteredCities, setFilteredCities] = useState([])
 
-	const [target, setTarget] = useState()
+	// const [target, setTarget] = useState()
 	useEffect(() => {
 		const options = {
 			method: "GET",
@@ -55,41 +60,41 @@ const App = () => {
 		)
 	}, [input])
 
-	return (
-		<div className="container" style={{}}>
-			<input value={input} onChange={(e) => setInput(e.target.value)} />
+    return (
+        <div className="container" style={{}}>
+            <input value={input} onChange={(e) => setInput(e.target.value)} />
 			<div>
 				{filteredCities.map((city) => (
 					<div>{city}</div>
 				))}
 			</div>
-			<div class="header">
-				<h1 style={{ color: "blue" }}>Geordle</h1>
-				<p style={{ color: "green" }}>The city guessing game</p>
-			</div>
-			<div class="body">
-				The goal of this game is to find a mystery city using a limited
-				number of guesses. Each new guess you make gives information on how
-				the city you guessed compares to the one you need to find.
-			</div>
-			<br />
-			<GuessForm model={model} />
-			<br />
-			<GameBoardView guesses={data} target={target} />
-			{target ? (
-				<div>
-					<p> Mystery city:</p>
-					<p> City: {target.name} </p>
-					<p> Country: {target.country} </p>
-					<p> Population: {target.population} </p>
-					<p> Latitude: {target.latitude.toFixed(2)} </p>
-					<p> Longitude: {target.longitude.toFixed(2)} </p>
-				</div>
-			) : (
-				"no data"
-			)}
-		</div>
-	)
+            <div class="header">
+                <h1 style={{ color: "blue" }}>Geordle</h1>
+                <p style={{ color: "green" }}>The city guessing game</p>
+            </div>
+            <div class="body">
+                The goal of this game is to find a mystery city using a limited
+                number of guesses. Each new guess you make gives information on
+                how the city you guessed compares to the one you need to find.
+            </div>
+            <br />
+            <GuessForm model={model} />
+            <br />
+            <GameBoardView guesses={data} target={target} />
+            {target ? (
+                <div>
+                    <p> Mystery city:</p>
+                    <p> City: {target.name} </p>
+                    <p> Country: {target.country} </p>
+                    <p> Population: {target.population} </p>
+                    <p> Latitude: {target.latitude.toFixed(2)} </p>
+                    <p> Longitude: {target.longitude.toFixed(2)} </p>
+                </div>
+            ) : (
+                "no data"
+            )}
+        </div>
+    )
 }
 
 export default App
