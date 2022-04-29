@@ -7,6 +7,7 @@ export default function GameBoardView(props) {
 
 
 function renderGuesses(props) {
+    console.log(props)
     function numericalProperty(
         guessProperty,
         targetProperty,
@@ -39,8 +40,7 @@ function renderGuesses(props) {
                 </span>{" "}
                 <span>
                     {guessProperty.toLocaleString(
-                        undefined // leave undefined to use the visitor's browser
-                        // locale or a string like 'en-US' to override it.
+                         'en-US'
                     )}{" "}
                 </span>
             </td>

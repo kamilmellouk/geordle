@@ -5,7 +5,7 @@ class GameModel {
         this.remainingGuesses = this.nrOfGuesses
         this.target = "Q60"
         this.guesses = [] // containts guess ids
-
+        this.targetPromiseState = {}
         this.currentGuessPromiseState = {}
     }
 

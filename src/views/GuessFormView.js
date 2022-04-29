@@ -8,7 +8,7 @@ export default function GuessForm(props) {
 
     return (
         <div class="center">
-            <input onChange={inputACB} />
+            <input onChange={inputACB} value={props.searchText}  />
             <button onClick={guessACB}>Guess</button>
         </div>
     )

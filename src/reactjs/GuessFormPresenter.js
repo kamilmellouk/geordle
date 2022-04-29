@@ -1,5 +1,4 @@
 import React from "react";
-
 import GuessFormView from "../views/GuessFormView.js";
 import { getCityByName } from "../citySource.js";
 
@@ -10,28 +9,30 @@ export default function GuessForm(props) {
         setSearchText(text);
     }
 
-    // const [promise, setPromise] = React.useState(function initializePromiseCB(){
-    //     return getCityByName(searchText);
-    // });
+     
+    //const [promise, setPromise] = React.useState(function initializePromiseCB(){
+    //    return getCityByName(searchText);
+    //});
 
-    // function searchACB() {
-    //     setPromise(getCityByName(searchText));
-    // }
+    //function searchACB() {
+    //    setPromise(getCityByName(searchText));
+    //}
 
-    // const [name, setName] = useState()
-    // useEffect(() => {
-    //   getCityByName('Casablanca').then(c => setName(c.data[0]))
-    // }, [])
+    //const [name, setName] = React.useState()
+    //React.useEffect(() => {
+    //  getCityByName('Casablanca').then(c => setName(c.data[0]))
+    //}, [])
   
-    // useEffect(() => {
+    // React.useEffect(() => {
     //   console.log(name)
     // }, [name])
 
 
     return (
         <GuessFormView
+            searchText={searchText}
             setSearchText={setSearchTextACB}
-            // search={searchACB}
+            
         />
     );
 }
