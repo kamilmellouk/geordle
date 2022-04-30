@@ -75,3 +75,9 @@
 .center {
     text-align: center;
 }
+
+.suggestions {
+    text-align: center;
+    max-height: 150px;
+    overflow: scroll;
+}

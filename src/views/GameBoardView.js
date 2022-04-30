@@ -48,6 +48,10 @@ function renderGuesses(props) {
     }
 
     function guessRowCB(guess) {
+        if (!guess) return null
+
+        console.log(guess)
+
         var dist = distance(
             guess.longitude,
             guess.latitude,

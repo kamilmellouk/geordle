@@ -3,7 +3,7 @@ import "./App.css"
 import GameModel from "./GameModel.js"
 
 import { getCityDetails } from "./citySource.js"
-import data from "./data.json"
+import data from "./test_guesses.json"
 
 import GameBoardView from "./views/GameBoardView"
 
@@ -17,57 +17,8 @@ const App = () => {
         getCityDetails("Q1748").then((c) => setTarget(c.data))
     }, [])
 
-    const [cities, setCities] = useState([])
-
-	const [input, setInput] = useState("")
-
-	const [filteredCities, setFilteredCities] = useState([])
-
-	// const [target, setTarget] = useState()
-	useEffect(() => {
-		const options = {
-			method: "GET",
-			headers: {
-				"X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
-				"X-RapidAPI-Key":
-					"4876c15595msh603eeebf11a00d2p1c8d4bjsn98cd6343a628",
-			},
-		}
-
-		fetch(
-			"https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&minPopulation=2000000",
-			options
-		)
-			.then((response) => response.json())
-			.then((response) => {
-				const cities = response.data
-				console.log(response)
-				setCities(cities.map((c) => c.name))
-			})
-			.catch((err) => console.error(err))
-	}, [])
-
-	useEffect(() => {
-		console.log(cities)
-	}, [cities])
-
-	useEffect(() => {
-		console.log(cities)
-		setFilteredCities(
-			cities.filter((city) =>
-				city.toLowerCase().includes(input.toLowerCase())
-			)
-		)
-	}, [input])
-
     return (
         <div className="container" style={{}}>
-            <input value={input} onChange={(e) => setInput(e.target.value)} />
-			<div>
-				{filteredCities.map((city) => (
-					<div>{city}</div>
-				))}
-			</div>
             <div class="header">
                 <h1 style={{ color: "blue" }}>Geordle</h1>
                 <p style={{ color: "green" }}>The city guessing game</p>
