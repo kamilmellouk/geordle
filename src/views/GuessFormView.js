@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import * as known_cities from "../known_cities.json"
 import data from "../data"
 
-export default function GuessForm(props) {
+export default function GuessFormView(props) {
     function guessACB() {
         console.log(known_cities)
     }
@@ -25,7 +25,7 @@ export default function GuessForm(props) {
 	}, [input])
 
     return (
-        <div class="center">
+        <div class="guessForm">
             <input value={input} onChange={(e) => setInput(e.target.value)} />
             <button onClick={guessACB}>Guess</button>
             <div class="suggestions">

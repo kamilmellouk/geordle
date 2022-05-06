@@ -1,3 +1,5 @@
+import React from "react"
+
 import { distance, getColor, maxDiffLongLat, maxDistance, maxDiffPop } from "../utilities"
 
 export default function GameBoardView(props) {

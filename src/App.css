@@ -76,8 +76,53 @@
     text-align: center;
 }
 
+.guessForm {
+    text-align: center;
+}
+.guessForm > input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+  }
+
 .suggestions {
     text-align: center;
     max-height: 150px;
     overflow: scroll;
+}
+
+.banner {
+    background: black;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    max-width: auto;
+}
+
+.banner__content {
+    max-width: auto;
+}
+
+.banner__text {
+    color: white;
+    font-weight: bold;
+    font-size: 1.4em;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.banner__button {
+    color: grey;
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 1.4em;
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
 }
