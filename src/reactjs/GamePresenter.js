@@ -2,6 +2,7 @@ import React from "react";
 
 import GuessFormView from "../views/GuessFormView.js";
 import GameBoardView from "../views/GameBoardView.js";
+import MapView from "../views/MapView.js";
 
 export default function Game(props) {
 
@@ -17,10 +18,12 @@ export default function Game(props) {
                     <button class="banner__button" onClick={helpACB}>Help</button>
                 </div>
             </div>
-            <br />
+            <br/>
             <GuessFormView model={props.model}/>,
-            <br />
+            <br/>
             <GameBoardView target={props.target} guesses={props.guesses}/>
+            <br/>
+            <MapView/>
             {props.target ? (
                 <div>
                     <p> Mystery city:</p>
