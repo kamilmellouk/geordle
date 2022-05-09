@@ -11,7 +11,7 @@ export default function Game(props) {
     }
 
     return (
-        <div>
+        <div> 
             <div class="banner">
                 <div class="banner__content">
                     <div class="banner__text">Geordle</div>
@@ -19,11 +19,15 @@ export default function Game(props) {
                 </div>
             </div>
             <br/>
-            <GuessFormView model={props.model}/>,
+            <GuessFormView model={props.model}/>
             <br/>
             <GameBoardView target={props.target} guesses={props.guesses}/>
             <br/>
-            <MapView/>
+            <div style={{textAlign:'center'}}>
+            <MapView />
+            </div>
+
+            <br/>
             {props.target ? (
                 <div>
                     <p> Mystery city:</p>
