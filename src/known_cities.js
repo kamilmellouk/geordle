@@ -572,7 +572,6 @@ export default [
     { rank: 425, name: "Freetown", country: "Sierra Leone", id: "Q3780" },
     { rank: 426, name: "Maoming", country: "China", id: "Q38927" },
     { rank: 428, name: "Fes", country: "Morocco", id: "Q20385782" },
-    { rank: 430, name: "Suzhou", country: "China", id: "Q42622" },
     { rank: 431, name: "Uyo", country: "Nigeria", id: "Q1999000" },
     { rank: 432, name: "Mysore", country: "India", id: "Q10086" },
     { rank: 433, name: "Dublin", country: "Ireland", id: "Q1761" },

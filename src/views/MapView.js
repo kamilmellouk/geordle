@@ -4,7 +4,7 @@ import { MAP_KEY } from "../apiConfig";
 
 const containerStyle = {
     position: "relative ",
-    width: '1000px',
+    width: '100%',
     height: '500px'
   };
   

@@ -1,12 +1,21 @@
+import known_cities from "./known_cities.js"
+
+import { getCityDetails } from "./citySource.js"
+
+import resolvePromise from "./resolvePromise.js"
+
 class GameModel {
     
     constructor() {
         this.nrOfGuesses = 8
         this.remainingGuesses = this.nrOfGuesses
-        this.target = "Q60"
-        this.guesses = [] // containts guess ids
-
+        this.guesses = [] // contains city guesses
         this.currentGuessPromiseState = {}
+
+        // this.targetPromiseState = {}
+        this.target = null
+        console.log("construct")
+    // this.setNewTarget()
     }
 
     newGame() {
@@ -21,6 +30,18 @@ class GameModel {
         this.guesses = [...this.guesses, city]
         this.remainingGuesses -= 1
     }
+
+    setNewTarget() {
+        // .then((response) => {
+        //     console.log("then", response)
+        //     this.target = response.data
+        // })
+        resolvePromise(
+            getCityDetails(known_cities.map(c => c.id)[Math.floor(Math.random() * known_cities.length)]), this.targetPromiseState, null
+        )
+    }
+
 }
+
 
 export default GameModel;

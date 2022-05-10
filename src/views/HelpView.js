@@ -15,7 +15,7 @@ export default function HelpView(props) {
                 <h1 style={{ color: "blue" }}>Geordle</h1>
                 <p style={{ color: "green" }}>The city guessing game</p>
             </div>
-            <div class="body">
+            <div class="body" style={{ color: "white" }}>
                 The goal of this game is to find a mystery city using a limited
                 number of guesses. Each new guess you make gives information on
                 how the city you guessed compares to the one you need to find.
