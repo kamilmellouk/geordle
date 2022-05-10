@@ -1,4 +1,7 @@
-import React from "react"
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+
 
 export default function HelpView(props) {
     
@@ -17,7 +20,17 @@ export default function HelpView(props) {
                 number of guesses. Each new guess you make gives information on
                 how the city you guessed compares to the one you need to find.
             </div>
-            <button onClick={gameACB}>Back to the game</button>
+            <Box textAlign='center'>
+                <Button
+                onClick={gameACB} 
+                type="submit"
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                >
+                Back to the game 
+                </Button>   
+            </Box>
+            
         </div>
     )
 }

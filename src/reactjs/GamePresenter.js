@@ -4,6 +4,7 @@ import GuessFormView from "../views/GuessFormView.js";
 import GameBoardView from "../views/GameBoardView.js";
 import MapView from "../views/MapView.js";
 
+
 export default function Game(props) {
 
     function helpACB() {
@@ -22,11 +23,8 @@ export default function Game(props) {
             <GuessFormView model={props.model}/>
             <br/>
             <GameBoardView target={props.target} guesses={props.guesses}/>
-            <br/>
-            <div style={{textAlign:'center'}}>
+            <br/>   
             <MapView />
-            </div>
-
             <br/>
             {props.target ? (
                 <div>

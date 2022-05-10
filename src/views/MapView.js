@@ -1,5 +1,4 @@
 import React from "react"
-
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { MAP_KEY } from "../apiConfig";
 
@@ -41,6 +40,7 @@ export default function MapView(props) {
   }
 
     return isLoaded ? (
+      
       <GoogleMap 
         mapContainerStyle={containerStyle}
         center={position}
