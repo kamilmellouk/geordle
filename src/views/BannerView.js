@@ -40,6 +40,11 @@ const ResponsiveAppBar = () => {
         <AppBar position="static" enableColorOnDark>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
+                    <img
+                        src="../img/pngegg.png"
+                        alt="logo"
+                        className="classes.logo"
+                    />
                     <Typography
                         variant="h6"
                         noWrap
@@ -104,9 +109,6 @@ const ResponsiveAppBar = () => {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon
-                        sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                    />
                     <Typography
                         variant="h5"
                         noWrap
@@ -123,7 +125,7 @@ const ResponsiveAppBar = () => {
                             textDecoration: "none",
                         }}
                     >
-                        LOGO
+                        GEORDLE
                     </Typography>
                     <Box
                         sx={{
