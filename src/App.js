@@ -10,22 +10,25 @@ import Game from "./reactjs/GamePresenter.js"
 
 import Show from "./reactjs/show.js"
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { green } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { green } from "@mui/material/colors"
 
 import promiseNoData from "./views/promiseNoData.js"
 import { getCityDetails } from "./citySource"
+import Login from "./reactjs/LoginPresenter"
+import Register from "./reactjs/RegisterPresenter.js"
+import { DarkMode } from "@mui/icons-material"
+import { color } from "@mui/system"
 
 const theme = createTheme({
     palette: {
+        mode: "dark",
         primary: green,
         secondary: {
-            main: '#66bb6a',
+            main: green[500],
         },
     },
-  });
-
-
+})
 
 const App = () => {
     // const [model, setModel] = React.useState(null)
@@ -37,7 +40,7 @@ const App = () => {
     //     getCityDetails("Q1748")
     // }, [])
     // promiseNoData(model.targetPromiseState) ||
-    
+
     const model = new GameModel()
 
     const [target, setTarget] = React.useState()
@@ -46,14 +49,19 @@ const App = () => {
     }, [])
 
     return (
-        
         <ThemeProvider theme={theme}>
             <div className="container" style={{}}>
                 <Show hash="#game">
-                    <Game model={model} guesses={data} target={target}/>
+                    <Game model={model} guesses={data} target={target} />
                 </Show>
                 <Show hash="#help">
-                    <HelpView/>
+                    <HelpView />
+                </Show>
+                <Show hash="#login">
+                    <Login model={model} />
+                </Show>
+                <Show hash="#register">
+                    <Register model={model} />
                 </Show>
             </div>
         </ThemeProvider>

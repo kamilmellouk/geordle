@@ -134,3 +134,8 @@ body {
 .hidden {
     display: none;
 }
+
+.inputID::placeholder {
+    color: white;
+    opacity: 1;
+}
