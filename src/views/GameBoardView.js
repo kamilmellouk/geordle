@@ -73,6 +73,19 @@ export default function GameBoardView(props) {
 
     function guessRowCB(guess) {
         if (!guess) return
+        var direction = ""
+        if (guess.latitude < props.model.target.latitude) {
+            direction += "N"
+        } else {
+            direction += "S"
+        }
+
+        if (guess.longitude < props.model.target.longitude) {
+            direction += "E"
+        } else {
+            direction += "W"
+        }
+
         var dist = distance(
             guess.longitude,
             guess.latitude,
@@ -111,36 +124,15 @@ export default function GameBoardView(props) {
                         maxDiffPop
                     )
                 )}
-                {numericalProperty(
-                    guess.latitude.toFixed(2),
-                    props.model.target === undefined
-                        ? props.model.target
-                        : props.model.target.latitude.toFixed(2),
-                    "↑",
-                    "↓",
-                    getColor(
-                        guess.latitude -
-                            (props.model.target === undefined
-                                ? props.model.target
-                                : props.model.target.latitude.toFixed(2)),
-                        maxDiffLongLat
-                    )
-                )}
-                {numericalProperty(
-                    guess.longitude.toFixed(2),
-                    props.model.target === undefined
-                        ? props.model.target
-                        : props.model.target.longitude.toFixed(2),
-                    "→",
-                    "←",
-                    getColor(
-                        guess.longitude -
-                            (props.model.target === undefined
-                                ? props.model.target
-                                : props.model.target.longitude.toFixed(2)),
-                        maxDiffLongLat
-                    )
-                )}
+                <StyledTableCell component="th" scope="row">
+                    {guess.latitude > props.model.target.latitude ? "↓" + guess.latitude.toFixed(2) : "↑" + guess.latitude.toFixed(2)}
+                </StyledTableCell>
+                <StyledTableCell class="guessestd">
+                    {guess.longitude > props.model.target.longitude ? "←" + guess.longitude.toFixed(2) : "→" + guess.longitude.toFixed(2)}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row">
+                    {guess.wikiDataId !== props.model.target.wikiDataId? direction : ""}
+                </StyledTableCell>
                 <StyledTableCell
                     class="guessestd"
                     style={{ backgroundColor: getColor(dist, maxDistance) }}
@@ -155,8 +147,9 @@ export default function GameBoardView(props) {
 
     return (
         <Container>
-            <Typography color="primary" variant="body1">Target city: {props.model.target? props.model.target.name + ", " + props.model.target.country : "no data"}</Typography>
-            <Typography color="primary" variant="body1">Remaining guesses: {props.model.remainingGuesses}</Typography>
+            <Typography color="primary" variant="h1" align="center">{props.model.found ? "GG FDP" : ""}</Typography>
+            <Typography color="primary" variant="body1" align="center">Target city: {props.model.target? props.model.target.name + ", " + props.model.target.country : "no data"}</Typography>
+            <Typography color="primary" variant="body1" align="center">Remaining guesses: {props.model.remainingGuesses}</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -166,6 +159,7 @@ export default function GameBoardView(props) {
                             <StyledTableCell align="right">Population</StyledTableCell>
                             <StyledTableCell align="right">Latitude</StyledTableCell>
                             <StyledTableCell align="right">Longitude</StyledTableCell>
+                            <StyledTableCell align="right>">Direction to target</StyledTableCell>
                             <StyledTableCell align="right">Distance to target</StyledTableCell>
                         </StyledTableRow>
                     </TableHead>

@@ -37,7 +37,7 @@ export default function Game(props) {
             <GuessFormView model={props.model} guessACB={addGuessACB} guessNameACB={setGuessNameACB} />
             <GameBoardView model={props.model} />
             <br />
-            <MapView />
+            <MapView model={props.model}/>
         </div>
     )
 }

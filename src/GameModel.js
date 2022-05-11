@@ -16,6 +16,8 @@ class GameModel {
 
         this.targetPromiseState = {}
         this.target = null
+
+        this.found = false
     }
 
     addGuess(city) {
@@ -23,11 +25,16 @@ class GameModel {
             return c.id === city.id;
         }
 
+        if(city.wikiDataId === this.target.wikiDataId) {
+            this.found = true
+        }
+
         if (this.remainingGuesses > 0 && !this.guesses.find(isCityInGuessesCB)) {
             this.guesses = [...this.guesses, city]
             this.remainingGuesses -= 1
             this.notifyObservers({addedGuess: city})
         }
+
     }
 
     setNewTarget() {
