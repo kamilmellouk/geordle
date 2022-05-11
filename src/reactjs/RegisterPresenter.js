@@ -36,10 +36,13 @@ function Register(props) {
     const [user, setUser] = useState({})
 
     async function checkValidUser(name) {
+        console.log(name)
         const q = query(collection(db, "users"), where("username", "==", name))
         const res = await getDocs(q)
-        console.log("hi")
-        return res.size
+        console.log(res.size)
+        let b = res.size === 0
+        console.log(b)
+        return b
     }
 
     onAuthStateChanged(auth, (currentUser) => {
@@ -52,12 +55,17 @@ function Register(props) {
                 auth,
                 registerEmail,
                 registerPassword
-            ).then((cred) => {
-                return db
-                    .collection("users")
-                    .doc(cred.user.uid)
-                    .set({ usermame: registerUsername })
-            })
+            )
+                .then((cred) => {
+                    return setDoc(doc(db, "users", cred.user.uid), {
+                        username: registerUsername,
+                        score: 0,
+                        gamesPlayed: 0,
+                        numberOfWins: 0,
+                    })
+                })
+                .then((p) => (window.location.hash = "#game"))
+                .catch((e) => window.alert(e))
         } catch (error) {
             console.log(error.message)
         }

@@ -11,9 +11,11 @@ import Avatar from "@mui/material/Avatar"
 import Button from "@mui/material/Button"
 import Tooltip from "@mui/material/Tooltip"
 import MenuItem from "@mui/material/MenuItem"
+import ImageListItem from "@mui/material/ImageListItem"
 import AdbIcon from "@mui/icons-material/Adb"
 import image from "../img/pngegg.png"
-
+import { signOut } from "firebase/auth"
+import { auth } from "../firebaseModel"
 const pages = ["Game", "Help"]
 const settings = ["Profile", "Logout"]
 
@@ -34,6 +36,16 @@ const ResponsiveAppBar = () => {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null)
+    }
+
+    const handleCloseUserMenuProfile = () => {
+        setAnchorElUser(null)
+        window.location.hash = "#profile"
+    }
+
+    const handleCloseUserMenuLogout = () => {
+        setAnchorElUser(null)
+        signOut(auth).then((window.location.hash = "#login"))
     }
 
     return (
@@ -191,16 +203,24 @@ const ResponsiveAppBar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
+                            {window.location.hash !== "#profile" && (
                                 <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
+                                    key={settings[0]}
+                                    onClick={handleCloseUserMenuProfile}
                                 >
                                     <Typography textAlign="center">
-                                        {setting}
+                                        {settings[0]}
                                     </Typography>
                                 </MenuItem>
-                            ))}
+                            )}
+                            <MenuItem
+                                key={settings[1]}
+                                onClick={handleCloseUserMenuLogout}
+                            >
+                                <Typography textAlign="center">
+                                    {settings[1]}
+                                </Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>

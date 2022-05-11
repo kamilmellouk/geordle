@@ -24,7 +24,6 @@ export default function LoginView(props) {
 
     function RegisterAndRedirect() {
         props.register()
-        window.location.hash = "#login"
     }
 
     return (

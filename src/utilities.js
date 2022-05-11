@@ -1,5 +1,5 @@
-const maxDistance = 7000
-const maxDiffLongLat = 7
+const maxDistance = 10000
+const maxDiffLongLat = 300
 const maxDiffPop = 1000000
 
 //gives the distance between two cities using their latitude and longitude
@@ -34,12 +34,10 @@ function getColor(tarGuessDiff, MaxDiff) {
     return ["hsl(", hue, ",100%,50%)"].join("")
 }
 
-
-
 function clip(v) {
     if (v <= 0) {
         return 0
     } else return Math.min(v, 1)
 }
 
-export { distance, getColor, maxDiffLongLat, maxDistance, maxDiffPop}
+export { distance, getColor, maxDiffLongLat, maxDistance, maxDiffPop }

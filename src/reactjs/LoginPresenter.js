@@ -42,7 +42,8 @@ function Login(props) {
                 loginEmail,
                 loginPassword
             )
-            console.log(user)
+                .then((p) => (window.location.hash = "#game"))
+                .catch((e) => window.alert(e))
         } catch (error) {
             console.log(error.message)
         }

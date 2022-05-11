@@ -5,6 +5,7 @@ import GameModel from "./GameModel.js"
 import data from "./test_guesses.json"
 
 import HelpView from "./views/HelpView"
+import ProfileView from "./views/ProfileView"
 
 import Game from "./reactjs/GamePresenter.js"
 
@@ -33,11 +34,14 @@ const theme = createTheme({
 })
 
 const App = () => {
-
     const model = new GameModel()
 
     async function setTarget() {
-        const promise = await getCityDetails(known_cities.map(c => c.id)[Math.floor(Math.random() * known_cities.length)])
+        const promise = await getCityDetails(
+            known_cities.map((c) => c.id)[
+                Math.floor(Math.random() * known_cities.length)
+            ]
+        )
         model.setTarget(promise.data)
     }
 
@@ -59,6 +63,9 @@ const App = () => {
                 </Show>
                 <Show hash="#register">
                     <Register model={model} />
+                </Show>
+                <Show hash="#profile">
+                    <ProfileView />
                 </Show>
             </div>
         </ThemeProvider>
