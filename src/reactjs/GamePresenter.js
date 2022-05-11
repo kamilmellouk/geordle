@@ -5,10 +5,11 @@ import GameBoardView from "../views/GameBoardView.js"
 import MapView from "../views/MapView.js"
 import BannerView from "../views/BannerView.js"
 
-import useModelProperty from "./useModelProperty.js"
+import useModelProperty from "./UseModelProperty.js"
 
 import known_cities from "../known_cities.js"
 import { getCityDetails } from "../citySource.js"
+import resolvePromise from "../resolvePromise.js"
 
 export default function Game(props) {
     useModelProperty(props.model, "guesses")
