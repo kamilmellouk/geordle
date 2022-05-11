@@ -225,7 +225,7 @@ export default [
         country: "Guatemala",
         id: "Q1555",
     },
-    { rank: 158, name: "Kyiv", country: "Ukraine", id: "1899" },
+    { rank: 158, name: "Kyiv", country: "Ukraine", id: "Q1899" },
     { rank: 159, name: "Surabaya", country: "Indonesia", id: "Q11462" },
     { rank: 161, name: "Lisbon", country: "Portugal", id: "Q597" },
     { rank: 162, name: "Zhongshan", country: "China", id: "Q59223" },

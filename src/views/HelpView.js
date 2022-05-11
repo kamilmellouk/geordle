@@ -2,20 +2,24 @@ import * as React from 'react';
 
 import BannerView from "./BannerView"
 
+import { Typography, Container } from '@mui/material';
+
 export default function HelpView() {
 
 
     return (
-        <div>
+        <div align="center">
             <BannerView/>
-            <div class="header">
-                <p style={{ color: "green" }}>The city guessing game</p>
-            </div>
-            <div class="body" style={{ color: "white" }}>
+            <Typography color="primary" variant="h2" align="center">
+                Geordle, the city guessing game
+            </Typography>
+            <br/>
+            <Typography color="white" variant="body1" align="center" style={{width: "50%"}}>
                 The goal of this game is to find a mystery city using a limited
                 number of guesses. Each new guess you make gives information on
                 how the city you guessed compares to the one you need to find.
-            </div>
+            </Typography>
         </div>
+
     )
 }

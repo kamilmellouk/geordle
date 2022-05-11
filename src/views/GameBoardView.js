@@ -3,13 +3,10 @@ import React from "react"
 import { distance, getColor, maxDiffLongLat, maxDistance, maxDiffPop } from "../utilities"
 
 import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { tableCellClasses } from '@mui/material/TableCell';
+
+import { Container, Paper, TableRow, TableHead, TableContainer, TableCell, TableBody, Table, Typography } from '@mui/material';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -157,24 +154,28 @@ export default function GameBoardView(props) {
     }
 
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <StyledTableRow>
-                        <StyledTableCell>City</StyledTableCell>
-                        <StyledTableCell align="right">Country</StyledTableCell>
-                        <StyledTableCell align="right">Population</StyledTableCell>
-                        <StyledTableCell align="right">Latitude</StyledTableCell>
-                        <StyledTableCell align="right">Longitude</StyledTableCell>
-                        <StyledTableCell align="right">Distance to target</StyledTableCell>
-                    </StyledTableRow>
-                </TableHead>
-                <TableBody>
-                    {   
-                        props.model.guesses.map(guessRowCB)
-                    }
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <Container>
+            <Typography color="primary" variant="body1">Target city: {props.model.target? props.model.target.name + ", " + props.model.target.country : "no data"}</Typography>
+            <Typography color="primary" variant="body1">Remaining guesses: {props.model.remainingGuesses}</Typography>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <StyledTableRow>
+                            <StyledTableCell>City</StyledTableCell>
+                            <StyledTableCell align="right">Country</StyledTableCell>
+                            <StyledTableCell align="right">Population</StyledTableCell>
+                            <StyledTableCell align="right">Latitude</StyledTableCell>
+                            <StyledTableCell align="right">Longitude</StyledTableCell>
+                            <StyledTableCell align="right">Distance to target</StyledTableCell>
+                        </StyledTableRow>
+                    </TableHead>
+                    <TableBody>
+                        {   
+                            props.model.guesses.map(guessRowCB)
+                        }
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Container>
     )
 }
