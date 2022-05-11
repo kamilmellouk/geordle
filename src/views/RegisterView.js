@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import Typography from "@mui/material/Typography"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
-import Image from "../img/signin.png"
+import Image from "../img/Fond.png"
 
 export default function LoginView(props) {
     const handleSubmit = (event) => {
@@ -71,6 +71,22 @@ export default function LoginView(props) {
                             onSubmit={handleSubmit}
                             sx={{ mt: 1 }}
                         >
+                            <TextField
+                                margin="normal"
+                                variant="standard"
+                                color="success"
+                                required
+                                fullWidth
+                                name="username"
+                                label="Username"
+                                type="username"
+                                id="username"
+                                onChange={props.setUsername}
+                                InputLabelProps={{
+                                    style: { color: "white" },
+                                }}
+                                sx={{ input: { color: "white" } }}
+                            />
                             <TextField
                                 id="email"
                                 variant="standard"
