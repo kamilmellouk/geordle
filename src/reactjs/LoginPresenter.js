@@ -19,7 +19,7 @@ function Login(props) {
 
     const login = async () => {
         try {
-            const user = await signInWithEmailAndPassword(
+            await signInWithEmailAndPassword(
                 auth,
                 loginEmail,
                 loginPassword

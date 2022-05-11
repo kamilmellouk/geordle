@@ -1,6 +1,6 @@
 import React from "react"
 
-import { distance, getColor, maxDiffLongLat, maxDistance, maxDiffPop } from "../utilities"
+import { distance, getColor, maxDistance, maxDiffPop } from "../utilities"
 
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
@@ -40,7 +40,6 @@ export default function GameBoardView(props) {
     ) {
         return (
             <td
-                class="guessestd"
                 style={{
                     backgroundColor: color,
                 }}
@@ -97,7 +96,6 @@ export default function GameBoardView(props) {
             <StyledTableRow key={guess.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <StyledTableCell component="th" scope="row"> {guess.name} </StyledTableCell>
                 <StyledTableCell
-                    class="guessestd"
                     style={
                         props.model.target === undefined
                             ? { color: "black" }
@@ -127,19 +125,14 @@ export default function GameBoardView(props) {
                 <StyledTableCell component="th" scope="row">
                     {guess.latitude > props.model.target.latitude ? "↓" + guess.latitude.toFixed(2) : "↑" + guess.latitude.toFixed(2)}
                 </StyledTableCell>
-                <StyledTableCell class="guessestd">
+                <StyledTableCell>
                     {guess.longitude > props.model.target.longitude ? "←" + guess.longitude.toFixed(2) : "→" + guess.longitude.toFixed(2)}
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
                     {guess.wikiDataId !== props.model.target.wikiDataId? direction : ""}
                 </StyledTableCell>
-                <StyledTableCell
-                    class="guessestd"
-                    style={{ backgroundColor: getColor(dist, maxDistance) }}
-                >
-                    {" "}
-                    {dist}
-                    {"  km"}
+                <StyledTableCell style={{ backgroundColor: getColor(dist, maxDistance) }}>
+                    {" " + dist + " km"}
                 </StyledTableCell>
             </StyledTableRow>
         )
@@ -155,12 +148,12 @@ export default function GameBoardView(props) {
                     <TableHead>
                         <StyledTableRow>
                             <StyledTableCell>City</StyledTableCell>
-                            <StyledTableCell align="right">Country</StyledTableCell>
-                            <StyledTableCell align="right">Population</StyledTableCell>
-                            <StyledTableCell align="right">Latitude</StyledTableCell>
-                            <StyledTableCell align="right">Longitude</StyledTableCell>
-                            <StyledTableCell align="right>">Direction to target</StyledTableCell>
-                            <StyledTableCell align="right">Distance to target</StyledTableCell>
+                            <StyledTableCell justify="center">Country</StyledTableCell>
+                            <StyledTableCell justify="center">Population</StyledTableCell>
+                            <StyledTableCell justify="center">Latitude</StyledTableCell>
+                            <StyledTableCell justify="center">Longitude</StyledTableCell>
+                            <StyledTableCell justify="center>">Direction to target</StyledTableCell>
+                            <StyledTableCell justify="center">Distance to target</StyledTableCell>
                         </StyledTableRow>
                     </TableHead>
                     <TableBody>

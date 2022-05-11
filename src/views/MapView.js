@@ -40,7 +40,7 @@ export default function MapView(props) {
   function cityCircleACB(c) {
     const center = {lat: c.latitude, lng: c.longitude}
     return (
-      <Marker position={center}/>
+      <Marker position={center} key={c.wikiDataId}/>
     )
   }
 

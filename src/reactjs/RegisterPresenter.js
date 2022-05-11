@@ -4,10 +4,6 @@ import {
     onAuthStateChanged,
 } from "firebase/auth"
 import {
-    collection,
-    query,
-    where,
-    getDocs,
     doc,
     setDoc,
 } from "firebase/firestore"
@@ -27,7 +23,7 @@ function Register(props) {
 
     const register = async () => {
         try {
-            const user = await createUserWithEmailAndPassword(
+            await createUserWithEmailAndPassword(
                 auth,
                 registerEmail,
                 registerPassword

@@ -2,8 +2,6 @@ import React from "react"
 import "./App.css"
 import GameModel from "./GameModel.js"
 
-import data from "./test_guesses.json"
-
 import HelpView from "./views/HelpView"
 import ProfileView from "./views/ProfileView"
 
@@ -17,7 +15,6 @@ import { green } from "@mui/material/colors"
 import { getCityDetails } from "./citySource"
 import Login from "./reactjs/LoginPresenter"
 import Register from "./reactjs/RegisterPresenter.js"
-import { color } from "@mui/system"
 
 import known_cities from "./known_cities"
 
@@ -34,6 +31,8 @@ const theme = createTheme({
 })
 
 const App = () => {
+    if(!navigation) return
+
     const model = new GameModel()
 
     async function setTarget() {

@@ -6,7 +6,6 @@ import TextField from "@mui/material/TextField"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import Checkbox from "@mui/material/Checkbox"
 import Link from "@mui/material/Link"
-import Paper from "@mui/material/Paper"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
@@ -17,7 +16,6 @@ import Image from "../img/Fond.png"
 export default function LoginView(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
-        const data = new FormData(event.currentTarget)
     }
 
     const theme = createTheme()
@@ -43,7 +41,7 @@ export default function LoginView(props) {
                         backgroundPosition: "center",
                     }}
                 />
-                <Grid item xs={12} sm={8} md={5} elevation={6} square>
+                <Grid item xs={12} sm={8} md={5} elevation={6}>
                     <Box
                         sx={{
                             my: 8,

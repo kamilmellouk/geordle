@@ -23,7 +23,7 @@ export default function GuessFormView(props) {
     const options = known_cities.sort(sortByCountryCB).map((c) => c.name + ", " + c.country)
 
     return (
-        <div class="guessForm">
+        <div>
             <Box
                 m={1}
                 display="flex"
@@ -38,11 +38,7 @@ export default function GuessFormView(props) {
                     id="combo-box-demo"
                     options={options}
                     sx={{ input: { color: "white" }, width: 300, m: 2 }}
-                    InputLabelProps={{
-                        style: {
-                            color: "white",
-                        },
-                    }}
+
                     renderInput={(params) => (
                         <TextField {...params} label="City" />
                     )}

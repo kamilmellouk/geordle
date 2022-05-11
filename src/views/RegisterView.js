@@ -13,7 +13,6 @@ import Image from "../img/Fond.png"
 export default function LoginView(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
-        const data = new FormData(event.currentTarget)
     }
 
     const theme = createTheme()
@@ -39,7 +38,7 @@ export default function LoginView(props) {
                         backgroundPosition: "center",
                     }}
                 />
-                <Grid item xs={12} sm={8} md={5} elevation={6} square>
+                <Grid item xs={12} sm={8} md={5} elevation={6}>
                     <Box
                         sx={{
                             my: 8,
@@ -83,7 +82,7 @@ export default function LoginView(props) {
                                 sx={{ input: { color: "white" } }}
                             />
                             <TextField
-                                id="email"
+                                id="emailRegister"
                                 variant="standard"
                                 color="success"
                                 margin="normal"
@@ -111,7 +110,7 @@ export default function LoginView(props) {
                                 name="password"
                                 label="Password"
                                 type="password"
-                                id="password"
+                                id="passwordRegister"
                                 onChange={props.setPwd}
                                 InputLabelProps={{
                                     style: { color: "white" },
