@@ -12,6 +12,7 @@ import Button from "@mui/material/Button"
 import Tooltip from "@mui/material/Tooltip"
 import MenuItem from "@mui/material/MenuItem"
 import AdbIcon from "@mui/icons-material/Adb"
+import image from "../img/pngegg.png"
 
 const pages = ["Game", "Help"]
 const settings = ["Profile", "Logout"]
@@ -29,7 +30,6 @@ const ResponsiveAppBar = () => {
 
     const handleCloseNavMenu = (event) => {
         window.location.hash = "#" + event.target.innerText.toLowerCase()
-        
     }
 
     const handleCloseUserMenu = () => {
@@ -41,10 +41,29 @@ const ResponsiveAppBar = () => {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <img
-                        src="../img/pngegg.png"
+                        src={image}
                         alt="logo"
                         className="classes.logo"
+                        width="3%"
+                        height="3%"
                     />
+
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="/"
+                        sx={{
+                            mr: 2,
+                            display: { xs: "none", md: "flex" },
+                            fontFamily: "monospace",
+                            fontWeight: 700,
+                            letterSpacing: ".3rem",
+                            color: "inherit",
+                            textDecoration: "none",
+                        }}
+                    ></Typography>
+
                     <Typography
                         variant="h6"
                         noWrap
