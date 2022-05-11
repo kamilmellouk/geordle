@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip"
 import MenuItem from "@mui/material/MenuItem"
 import AdbIcon from "@mui/icons-material/Adb"
 
-const pages = ["Help"]
+const pages = ["Game", "Help"]
 const settings = ["Profile", "Logout"]
 
 const ResponsiveAppBar = () => {
@@ -27,8 +27,9 @@ const ResponsiveAppBar = () => {
         setAnchorElUser(event.currentTarget)
     }
 
-    const handleCloseNavMenu = () => {
-        window.location.hash = "#help"
+    const handleCloseNavMenu = (event) => {
+        window.location.hash = "#" + event.target.innerText.toLowerCase()
+        
     }
 
     const handleCloseUserMenu = () => {

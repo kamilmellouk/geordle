@@ -2,13 +2,38 @@ import React from "react"
 
 import { distance, getColor, maxDiffLongLat, maxDistance, maxDiffPop } from "../utilities"
 
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+      textAlign: 'center',
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+      textAlign: 'center',
+    },
+  }));
+  
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+
 export default function GameBoardView(props) {
-    return <div id="game-board">{renderGuesses(props)}</div>
-}
-
-
-
-function renderGuesses(props) {
     function numericalProperty(
         guessProperty,
         targetProperty,
@@ -60,9 +85,9 @@ function renderGuesses(props) {
         ).toFixed(0)
 
         return (
-            <tr class="guessestr" key={guess.id}>
-                <td class="guessestdname"> {guess.name} </td>
-                <td
+            <StyledTableRow key={guess.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <StyledTableCell component="th" scope="row"> {guess.name} </StyledTableCell>
+                <StyledTableCell
                     class="guessestd"
                     style={
                         props.target === undefined
@@ -74,7 +99,7 @@ function renderGuesses(props) {
                 >
                     {" "}
                     {guess.country}{" "}
-                </td>
+                </StyledTableCell>
                 {numericalProperty(
                     guess.population,
                     props.target === undefined
@@ -120,33 +145,35 @@ function renderGuesses(props) {
                         maxDiffLongLat
                     )
                 )}
-                <td
+                <StyledTableCell
                     class="guessestd"
                     style={{ backgroundColor: getColor(dist, maxDistance) }}
                 >
                     {" "}
                     {dist}
                     {"  km"}
-                </td>
-            </tr>
+                </StyledTableCell>
+            </StyledTableRow>
         )
     }
 
     return (
-        <div>
-            <table class="guesses">
-                <thead>
-                    <tr>
-                        <th class="guessesthname">Name</th>
-                        <th class="guessesth">Country</th>
-                        <th class="guessesth">Population</th>
-                        <th class="guessesth">Latitude</th>
-                        <th class="guessesth">Longitude</th>
-                        <th class="guessesth">Distance</th>
-                    </tr>
-                </thead>
-                <tbody>{props.guesses.map(guessRowCB)}</tbody>
-            </table>
-        </div>
+        <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                    <StyledTableRow>
+                        <StyledTableCell>City</StyledTableCell>
+                        <StyledTableCell align="right">Country</StyledTableCell>
+                        <StyledTableCell align="right">Population</StyledTableCell>
+                        <StyledTableCell align="right">Latitude</StyledTableCell>
+                        <StyledTableCell align="right">Longitude</StyledTableCell>
+                        <StyledTableCell align="right">Distance to target</StyledTableCell>
+                    </StyledTableRow>
+                </TableHead>
+                <TableBody>
+                    {props.guesses.map(guessRowCB)}
+                </TableBody>
+            </Table>
+        </TableContainer>
     )
 }
