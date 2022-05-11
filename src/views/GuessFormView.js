@@ -14,7 +14,13 @@ export default function GuessFormView(props) {
         props.guessNameACB(value)
     }
 
-    const options = known_cities.map((c) => c.name + ", " + c.country)
+    function sortByCountryCB(a, b) {
+        if (a.country < b.country) return -1;
+        if (a.country > b.country) return 1;
+        return 0;
+    }
+
+    const options = known_cities.sort(sortByCountryCB).map((c) => c.name + ", " + c.country)
 
     return (
         <div class="guessForm">
