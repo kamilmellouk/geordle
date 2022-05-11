@@ -76,7 +76,7 @@ export default function GameBoardView(props) {
 
     function guessRowCB(guess) {
         if (!guess) return null
-
+        
         var dist = distance(
             guess.longitude,
             guess.latitude,
@@ -171,7 +171,9 @@ export default function GameBoardView(props) {
                     </StyledTableRow>
                 </TableHead>
                 <TableBody>
-                    {props.guesses.map(guessRowCB)}
+                    {   
+                        props.model.guesses.map(guessRowCB)
+                    }
                 </TableBody>
             </Table>
         </TableContainer>

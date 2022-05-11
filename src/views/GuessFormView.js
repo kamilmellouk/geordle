@@ -6,7 +6,7 @@ import known_cities from "../known_cities"
 
 export default function GuessFormView(props) {
     function guessACB() {
-        console.log(known_cities)
+        props.guessACB()
     }
 
     const options = known_cities.map((c) => c.name + ", " + c.country)

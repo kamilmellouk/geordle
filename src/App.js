@@ -13,11 +13,9 @@ import Show from "./reactjs/show.js"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { green } from "@mui/material/colors"
 
-import promiseNoData from "./views/promiseNoData.js"
 import { getCityDetails } from "./citySource"
 import Login from "./reactjs/LoginPresenter"
 import Register from "./reactjs/RegisterPresenter.js"
-import { DarkMode } from "@mui/icons-material"
 import { color } from "@mui/system"
 
 const theme = createTheme({

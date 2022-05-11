@@ -48,21 +48,6 @@
     },
 
     {
-        "id":10996,
-        "wikiDataId":"Q807",
-        "type":"CITY",
-        "city":"Lausanne",
-        "name":"Lausanne",
-        "country":"Switzerland",
-        "countryCode":"CH",
-        "region":"Canton of Vaud",
-        "regionCode":"VD",
-        "latitude":46.533333333,
-        "longitude":6.633333333,
-        "population":139111
-    },
-
-    {
         "id":26736,
         "wikiDataId":"Q154897",
         "type":"CITY",
