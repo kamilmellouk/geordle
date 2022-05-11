@@ -18,13 +18,6 @@ class GameModel {
         this.target = null
     }
 
-    newGame() {
-        // TODO: reset currentGuess, remainingGuesses and randomly choose target
-        this.remainingGuesses = this.nrOfGuesses
-        this.guesses = []
- 
-    }
-
     addGuess(city) {
         function isCityInGuessesCB(c){
             return c.id === city.id;
@@ -47,6 +40,16 @@ class GameModel {
         )
     }
     
+    resetGame() {
+        this.observers = []
+
+        this.nrOfGuesses = 8
+        this.remainingGuesses = this.nrOfGuesses
+        this.guesses = [] 
+        this.currentGuessPromiseState = {}
+
+        // Todo: get random target
+    }
 
 
 

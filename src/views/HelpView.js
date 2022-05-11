@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import BannerView from "./BannerView"
 
-export default function HelpView(props) {
+export default function HelpView() {
 
 
     return (

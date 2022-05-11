@@ -5,8 +5,13 @@ import { Autocomplete, Box, Button, TextField } from "@mui/material"
 import known_cities from "../known_cities"
 
 export default function GuessFormView(props) {
+
     function guessACB() {
         props.guessACB()
+    }
+
+    function saveGuessNameACB(event, value) {
+        props.guessNameACB(value)
     }
 
     const options = known_cities.map((c) => c.name + ", " + c.country)
@@ -21,6 +26,7 @@ export default function GuessFormView(props) {
                 sx={{ m: 2 }}
             >
                 <Autocomplete
+                    onChange={saveGuessNameACB}
                     style={{ color: "white" }}
                     disablePortal
                     id="combo-box-demo"
