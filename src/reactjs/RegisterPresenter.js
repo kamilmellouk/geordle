@@ -1,49 +1,25 @@
-import { useState, useEffect } from "react"
 import React from "react"
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
-    updateProfile,
 } from "firebase/auth"
 import {
-    getFirestore,
     collection,
     query,
     where,
     getDocs,
     doc,
     setDoc,
-    orderBy,
-    limit,
-    updateDoc,
-    increment,
-    onSnapshot,
-    arrayUnion,
-    arrayRemove,
-    addDoc,
-    getDoc,
 } from "firebase/firestore"
 import { auth, db } from "../firebaseModel"
 import RegisterView from "../views/RegisterView"
-import { ResetTvOutlined } from "@mui/icons-material"
-//import { loginWithFirebase } from "../firebaseModel"
 
 function Register(props) {
-    const [registerEmail, setRegisterEmail] = useState("")
-    const [registerPassword, setRegisterPassword] = useState("")
-    const [registerUsername, setRegisterUsername] = useState("")
+    const [registerEmail, setRegisterEmail] = React.useState("")
+    const [registerPassword, setRegisterPassword] = React.useState("")
+    const [registerUsername, setRegisterUsername] = React.useState("")
 
-    const [user, setUser] = useState({})
-
-    async function checkValidUser(name) {
-        console.log(name)
-        const q = query(collection(db, "users"), where("username", "==", name))
-        const res = await getDocs(q)
-        console.log(res.size)
-        let b = res.size === 0
-        console.log(b)
-        return b
-    }
+    const [ , setUser] = React.useState({})
 
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser)

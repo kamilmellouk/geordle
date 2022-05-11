@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import BannerView from "./BannerView"
 
-import { Typography, Container } from '@mui/material';
+import { Typography } from '@mui/material';
 
 export default function HelpView() {
 
