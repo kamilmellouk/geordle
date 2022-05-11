@@ -1,14 +1,9 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
 
 import BannerView from "./BannerView"
 
 export default function HelpView(props) {
-    
-    function gameACB() {
-        window.location.hash = "#game"
-    }
+
 
     return (
         <div>

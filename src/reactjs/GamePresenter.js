@@ -8,10 +8,6 @@ import BannerView from "../views/BannerView.js"
 import useModelProperty from "./useModelProperty.js"
 
 export default function Game(props) {
-    function helpACB() {
-        window.location.hash = "#help"
-    }
-
     useModelProperty(props.model, "guesses")
 
     function addGuessACB() {
