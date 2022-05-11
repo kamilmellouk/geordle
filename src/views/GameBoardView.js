@@ -51,14 +51,14 @@ export default function GameBoardView(props) {
                 {" "}
                 <span
                     style={
-                        props.target === undefined
+                        props.model.target === undefined
                             ? { color: "black" }
                             : guessProperty <= targetProperty
                             ? { color: "black" }
                             : { color: "black" }
                     }
                 >
-                    {props.target === undefined
+                    {props.model.target === undefined
                         ? "."
                         : guessProperty <= targetProperty
                         ? higherSymbol
@@ -75,13 +75,12 @@ export default function GameBoardView(props) {
     }
 
     function guessRowCB(guess) {
-        if (!guess) return null
-        
+        if (!guess) return
         var dist = distance(
             guess.longitude,
             guess.latitude,
-            props.target === undefined ? 0 : props.target.longitude,
-            props.target === undefined ? 0 : props.target.latitude
+            props.model.target === undefined ? 0 : props.model.target.longitude,
+            props.model.target === undefined ? 0 : props.model.target.latitude
         ).toFixed(0)
 
         return (
@@ -90,9 +89,9 @@ export default function GameBoardView(props) {
                 <StyledTableCell
                     class="guessestd"
                     style={
-                        props.target === undefined
+                        props.model.target === undefined
                             ? { color: "black" }
-                            : guess.country === props.target.country
+                            : guess.country === props.model.target.country
                             ? { backgroundColor: "green" }
                             : { backgroundColor: "red" }
                     }
@@ -102,46 +101,46 @@ export default function GameBoardView(props) {
                 </StyledTableCell>
                 {numericalProperty(
                     guess.population,
-                    props.target === undefined
-                        ? props.target
-                        : props.target.population,
+                    props.model.target === undefined
+                        ? props.model.target
+                        : props.model.target.population,
                     "↑",
                     "↓",
                     getColor(
                         guess.population -
-                            (props.target === undefined
-                                ? props.target
-                                : props.target.population),
+                            (props.model.target === undefined
+                                ? props.model.target
+                                : props.model.target.population),
                         maxDiffPop
                     )
                 )}
                 {numericalProperty(
                     guess.latitude.toFixed(2),
-                    props.target === undefined
-                        ? props.target
-                        : props.target.latitude.toFixed(2),
+                    props.model.target === undefined
+                        ? props.model.target
+                        : props.model.target.latitude.toFixed(2),
                     "↑",
                     "↓",
                     getColor(
                         guess.latitude -
-                            (props.target === undefined
-                                ? props.target
-                                : props.target.latitude.toFixed(2)),
+                            (props.model.target === undefined
+                                ? props.model.target
+                                : props.model.target.latitude.toFixed(2)),
                         maxDiffLongLat
                     )
                 )}
                 {numericalProperty(
                     guess.longitude.toFixed(2),
-                    props.target === undefined
-                        ? props.target
-                        : props.target.longitude.toFixed(2),
+                    props.model.target === undefined
+                        ? props.model.target
+                        : props.model.target.longitude.toFixed(2),
                     "→",
                     "←",
                     getColor(
                         guess.longitude -
-                            (props.target === undefined
-                                ? props.target
-                                : props.target.longitude.toFixed(2)),
+                            (props.model.target === undefined
+                                ? props.model.target
+                                : props.model.target.longitude.toFixed(2)),
                         maxDiffLongLat
                     )
                 )}

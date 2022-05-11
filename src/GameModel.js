@@ -14,7 +14,7 @@ class GameModel {
         this.guesses = [] // contains city guesses
         this.currentGuessPromiseState = {}
 
-        // this.targetPromiseState = {}
+        this.targetPromiseState = {}
         this.target = null
     }
 
@@ -31,13 +31,15 @@ class GameModel {
     }
 
     setNewTarget() {
-        // .then((response) => {
-        //     console.log("then", response)
-        //     this.target = response.data
-        // })
         resolvePromise(
             getCityDetails(known_cities.map(c => c.id)[Math.floor(Math.random() * known_cities.length)]), this.targetPromiseState, null
         )
+
+        this.target = this.targetPromiseState.data
+    }
+
+    setTarget(target) {
+        this.target = target
     }
     
     resetGame() {

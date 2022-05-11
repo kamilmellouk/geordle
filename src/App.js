@@ -18,6 +18,10 @@ import Login from "./reactjs/LoginPresenter"
 import Register from "./reactjs/RegisterPresenter.js"
 import { color } from "@mui/system"
 
+import known_cities from "./known_cities"
+
+import navigation from "./views/navigation"
+
 const theme = createTheme({
     palette: {
         mode: "dark",
@@ -29,28 +33,23 @@ const theme = createTheme({
 })
 
 const App = () => {
-    // const [model, setModel] = React.useState(null)
-
-    // React.useEffect(function onStartACB() {
-    //     // console.log("hey")
-    //     setModel(new GameModel())
-
-    //     getCityDetails("Q1748")
-    // }, [])
-    // promiseNoData(model.targetPromiseState) ||
 
     const model = new GameModel()
 
-    const [target, setTarget] = React.useState()
+    async function setTarget() {
+        const promise = await getCityDetails(known_cities.map(c => c.id)[Math.floor(Math.random() * known_cities.length)])
+        model.setTarget(promise.data)
+    }
+
     React.useEffect(() => {
-        getCityDetails("Q1748").then((c) => setTarget(c.data))
+        setTarget()
     }, [])
 
     return (
         <ThemeProvider theme={theme}>
             <div className="container" style={{}}>
                 <Show hash="#game">
-                    <Game model={model} guesses={data} target={target} />
+                    <Game model={model} target={model.target} />
                 </Show>
                 <Show hash="#help">
                     <HelpView />

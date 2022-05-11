@@ -2,7 +2,10 @@ import {BASE_URL, API_KEY} from "./apiConfig.js";
 
 function  APICall(endpoint, params) {
     function treatHTTPResponseACB(response) {
-        if (response.status !== 200) throw Error("API Problem");
+        if (response.status !== 200) {
+            console.log("status", response)
+            throw Error("API Problem");
+        }
         return response.json();
     }
 
