@@ -8,7 +8,7 @@ import BannerView from "../views/BannerView.js"
 import useModelProperty from "./useModelProperty.js"
 
 import known_cities from "../known_cities.js"
-import { getCityDetails, getTime } from "../citySource.js"
+import { getCityDetails } from "../citySource.js"
 import resolvePromise from "../resolvePromise.js"
 
 export default function Game(props) {
@@ -20,14 +20,9 @@ export default function Game(props) {
         function findIdFromNameCB(name) {
             return known_cities.find((c) => c.name === name.split(",")[0]).id
         }
-        const id = findIdFromNameCB(guessName)
-        const cityData = await getCityDetails(id)
-        const utcOffset = await getTime(id)
-        
-        const guess = cityData
-        cityData.hour = Number.parseInt(utcOffset.data.split(":")[0])
 
-        props.model.addGuess(guess)
+        const guess = await getCityDetails(findIdFromNameCB(guessName))
+        props.model.addGuess(guess.data)
     }
 
     const [guessName, setGuessName] = React.useState("")
