@@ -42,6 +42,7 @@ export default function GameBoardView(props) {
             <td
                 style={{
                     backgroundColor: color,
+                    textAlign: "center"
                 }}
             >
                 {" "}
@@ -122,17 +123,11 @@ export default function GameBoardView(props) {
                         maxDiffPop
                     )
                 )}
-                <StyledTableCell component="th" scope="row">
-                    {guess.latitude > props.model.target.latitude ? "↓" + guess.latitude.toFixed(2) : "↑" + guess.latitude.toFixed(2)}
-                </StyledTableCell>
-                <StyledTableCell>
-                    {guess.longitude > props.model.target.longitude ? "←" + guess.longitude.toFixed(2) : "→" + guess.longitude.toFixed(2)}
+                <StyledTableCell style={{ backgroundColor: getColor(dist, maxDistance) }}>
+                    {" " + dist + " km"}
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
                     {guess.wikiDataId !== props.model.target.wikiDataId? direction : ""}
-                </StyledTableCell>
-                <StyledTableCell style={{ backgroundColor: getColor(dist, maxDistance) }}>
-                    {" " + dist + " km"}
                 </StyledTableCell>
             </StyledTableRow>
         )
@@ -150,10 +145,8 @@ export default function GameBoardView(props) {
                             <StyledTableCell>City</StyledTableCell>
                             <StyledTableCell justify="center">Country</StyledTableCell>
                             <StyledTableCell justify="center">Population</StyledTableCell>
-                            <StyledTableCell justify="center">Latitude</StyledTableCell>
-                            <StyledTableCell justify="center">Longitude</StyledTableCell>
-                            <StyledTableCell justify="center>">Direction to target</StyledTableCell>
                             <StyledTableCell justify="center">Distance to target</StyledTableCell>
+                            <StyledTableCell justify="center>">Direction to target</StyledTableCell>
                         </StyledTableRow>
                     </TableHead>
                     <TableBody>
