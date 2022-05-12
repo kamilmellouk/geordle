@@ -16,5 +16,5 @@ export default function Profile(props) {
 
 	if (!user) return null
 
-	return <ProfileView model={props.model} currentUser={user}></ProfileView>
+	return <ProfileView model={props.model} currentUser={user}/>
 }

@@ -34,7 +34,6 @@ function Register(props) {
                         score: 0,
                         gamesPlayed: 0,
                         numberOfWins: 0,
-                        games: [],
                     })
                 })
                 .then((p) => (window.location.hash = "#game"))

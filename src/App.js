@@ -12,13 +12,11 @@ import Show from "./reactjs/show.js"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { green } from "@mui/material/colors"
 
-import { getCityDetails } from "./citySource"
 import Login from "./reactjs/LoginPresenter"
 import Register from "./reactjs/RegisterPresenter.js"
 
 import { auth } from "./firebaseModel.js"
 
-import known_cities from "./known_cities"
 
 import navigation from "./views/navigation"
 
@@ -39,35 +37,35 @@ const App = () => {
 
     const [isLoggedin, setIsLoggedIn] = React.useState(false)
     auth.onAuthStateChanged(function (user) {
-       console.log("heyhey")
         setIsLoggedIn(!!user)
     })
 
     return (
         <ThemeProvider theme={theme}>
             <div className="container" style={{}}>
-                <Show hash="#game">
-                    {isLoggedin ? (
-                        <Game model={model}/>
-                    ) : (
-                        <p>You have to log in</p>
-                    )}
-                </Show>
-                <Show hash="#help">
-                    <HelpView />
-                </Show>
+                {isLoggedin ? (
+                    <div>
+                        <Show hash="#game">
+                            <Game model={model}/>
+                        </Show>
+                        <Show hash="#help">
+                            <HelpView />
+                        </Show>
+                        <Show hash="#profile">
+                            <Profile model={model} />
+                        </Show>
+                    </div>
+                ) : (
+                    <div>
+                        {window.location.hash = "#login"}
+                    </div>
+                )
+                }
                 <Show hash="#login">
                     <Login model={model} />
                 </Show>
                 <Show hash="#register">
                     <Register model={model} />
-                </Show>
-                <Show hash="#profile">
-                    {isLoggedin ? (
-                        <Profile model={model} />
-                    ) : (
-                        <p>You have to log in</p>
-                    )}
                 </Show>
             </div>
         </ThemeProvider>

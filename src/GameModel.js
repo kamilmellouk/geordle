@@ -4,12 +4,14 @@ import { getCityDetails } from "./citySource.js"
 
 import resolvePromise from "./resolvePromise.js"
 
+import {setUserInfo} from "./firebaseModel.js"
+
 class GameModel {
     
     constructor() {
         this.observers = []
 
-        this.nrOfGuesses = 8
+        this.nrOfGuesses = 10
         this.remainingGuesses = this.nrOfGuesses
         this.guesses = [] // contains city guesses
         this.currentGuessPromiseState = {}
@@ -18,25 +20,30 @@ class GameModel {
         this.target = null
 
         this.found = false
+        this.done = false
     }
 
     addGuess(city) {
-        function isCityInGuessesCB(c){
-            return c.id === city.id;
-        }
-
-        console.log("city", city)
-        console.log("target", this.target)
-        if(city.wikiDataId === this.target.wikiDataId) {
-            this.found = true
-        }
-
-        if (this.remainingGuesses > 0 && !this.guesses.find(isCityInGuessesCB)) {
-            this.guesses = [...this.guesses, city]
+        if (this.remainingGuesses > 0) {
             this.remainingGuesses -= 1
+            this.guesses = [...this.guesses, city]
             this.notifyObservers({addedGuess: city})
+
+            if(this.target && (this.target.wikiDataId === city.wikiDataId)) {
+                this.found = true
+                this.done = true
+            }
+        } else {
+            if(!this.target) return
+            if (this.target && (this.target.wikiDataId !== city.wikiDataId)) {
+                this.done = true
+            }
         }
 
+        if(this.done) {
+            setUserInfo(this).then(() => {})
+        }
+        
     }
 
     setNewTarget() {
