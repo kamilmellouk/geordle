@@ -2,8 +2,10 @@ import React from "react"
 import "./App.css"
 import GameModel from "./GameModel.js"
 
+import data from "./test_guesses.json"
+
 import HelpView from "./views/HelpView"
-import ProfileView from "./views/ProfileView"
+import Profile from "./reactjs/ProfilePresenter"
 
 import Game from "./reactjs/GamePresenter.js"
 
@@ -15,6 +17,9 @@ import { green } from "@mui/material/colors"
 import { getCityDetails } from "./citySource"
 import Login from "./reactjs/LoginPresenter"
 import Register from "./reactjs/RegisterPresenter.js"
+import { color } from "@mui/system"
+
+import { auth } from "./firebaseModel.js"
 
 import known_cities from "./known_cities"
 
@@ -31,7 +36,12 @@ const theme = createTheme({
 })
 
 const App = () => {
-    if(!navigation) return
+    console.log(auth)
+
+    const [isLoggedin, setIsLoggedIn] = React.useState(false)
+    auth.onAuthStateChanged(function (user) {
+        setIsLoggedIn(!!user)
+    })
 
     const model = new GameModel()
 
@@ -64,7 +74,11 @@ const App = () => {
                     <Register model={model} />
                 </Show>
                 <Show hash="#profile">
-                    <ProfileView />
+                    {isLoggedin ? (
+                        <Profile model={model} />
+                    ) : (
+                        <p>You have to log in</p>
+                    )}
                 </Show>
             </div>
         </ThemeProvider>

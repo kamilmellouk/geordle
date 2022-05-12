@@ -41,6 +41,7 @@ export default function GameBoardView(props) {
         return (
             <td
                 style={{
+                    textAlign: "center",
                     backgroundColor: color,
                 }}
             >
@@ -96,6 +97,8 @@ export default function GameBoardView(props) {
             <StyledTableRow key={guess.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <StyledTableCell component="th" scope="row"> {guess.name} </StyledTableCell>
                 <StyledTableCell
+                    component="th" 
+                    scope="row"
                     style={
                         props.model.target === undefined
                             ? { color: "black" }
@@ -123,16 +126,13 @@ export default function GameBoardView(props) {
                     )
                 )}
                 <StyledTableCell component="th" scope="row">
-                    {guess.latitude > props.model.target.latitude ? "↓" + guess.latitude.toFixed(2) : "↑" + guess.latitude.toFixed(2)}
-                </StyledTableCell>
-                <StyledTableCell>
-                    {guess.longitude > props.model.target.longitude ? "←" + guess.longitude.toFixed(2) : "→" + guess.longitude.toFixed(2)}
-                </StyledTableCell>
-                <StyledTableCell component="th" scope="row">
                     {guess.wikiDataId !== props.model.target.wikiDataId? direction : ""}
                 </StyledTableCell>
                 <StyledTableCell style={{ backgroundColor: getColor(dist, maxDistance) }}>
                     {" " + dist + " km"}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row">
+                    {props.model.target.hour - guess.hour} hours
                 </StyledTableCell>
             </StyledTableRow>
         )
@@ -150,10 +150,9 @@ export default function GameBoardView(props) {
                             <StyledTableCell>City</StyledTableCell>
                             <StyledTableCell justify="center">Country</StyledTableCell>
                             <StyledTableCell justify="center">Population</StyledTableCell>
-                            <StyledTableCell justify="center">Latitude</StyledTableCell>
-                            <StyledTableCell justify="center">Longitude</StyledTableCell>
                             <StyledTableCell justify="center>">Direction to target</StyledTableCell>
                             <StyledTableCell justify="center">Distance to target</StyledTableCell>
+                            <StyledTableCell justify="center">Time difference with target</StyledTableCell>
                         </StyledTableRow>
                     </TableHead>
                     <TableBody>

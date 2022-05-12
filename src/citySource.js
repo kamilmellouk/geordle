@@ -40,4 +40,11 @@ function getDistance(fromId, toId) {
     );
 }
 
-export {getCityDetails, getCityByName, getDistance};
+function getTime(id) {
+    return APICall(
+        "cities/",
+        id + "/time"
+    )
+}
+
+export {getCityDetails, getCityByName, getDistance, getTime};
