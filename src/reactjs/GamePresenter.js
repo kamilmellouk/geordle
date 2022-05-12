@@ -14,6 +14,19 @@ import resolvePromise from "../resolvePromise.js"
 export default function Game(props) {
     useModelProperty(props.model, "guesses")
 
+    async function setTarget() {
+        const promise = await getCityDetails(
+            known_cities.map((c) => c.id)[
+                Math.floor(Math.random() * known_cities.length)
+            ]
+        )
+        props.model.setTarget(promise.data)
+    }
+
+    React.useEffect(() => {
+        setTarget()
+    }, [])
+
     async function addGuessACB() {
         if (!guessName) return
 

@@ -36,20 +36,6 @@ const App = () => {
     if(!navigation) return
 
     const model = new GameModel()
-    async function setTarget() {
-
-        const promise = await getCityDetails(
-            known_cities.map((c) => c.id)[
-                Math.floor(Math.random() * known_cities.length)
-            ]
-        )
-        console.log("suuuuu")
-        model.setTarget(promise.data)
-    }
-
-    React.useEffect(() => {
-        setTarget()
-    }, [])
 
     const [isLoggedin, setIsLoggedIn] = React.useState(false)
     auth.onAuthStateChanged(function (user) {
@@ -61,7 +47,11 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <div className="container" style={{}}>
                 <Show hash="#game">
-                    <Game model={model} target={model.target} />
+                    {isLoggedin ? (
+                        <Game model={model}/>
+                    ) : (
+                        <p>You have to log in</p>
+                    )}
                 </Show>
                 <Show hash="#help">
                     <HelpView />
@@ -73,11 +63,11 @@ const App = () => {
                     <Register model={model} />
                 </Show>
                 <Show hash="#profile">
-                    {/* {isLoggedin ? (
+                    {isLoggedin ? (
                         <Profile model={model} />
                     ) : (
                         <p>You have to log in</p>
-                    )} */}
+                    )}
                 </Show>
             </div>
         </ThemeProvider>

@@ -25,6 +25,8 @@ class GameModel {
             return c.id === city.id;
         }
 
+        console.log("city", city)
+        console.log("target", this.target)
         if(city.wikiDataId === this.target.wikiDataId) {
             this.found = true
         }

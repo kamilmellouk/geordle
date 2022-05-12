@@ -35,6 +35,7 @@ import { getUserInfo } from "../firebaseModel"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 export default function ProfileView(props) {
+    console.log(props.currentUser)
 	return (
 		<div>
 			<BannerView />
@@ -44,7 +45,21 @@ export default function ProfileView(props) {
 				variant="body1"
 				align="center"
 				style={{ width: "50%" }}>
-				{props.currentUser.username}
+				Username: {props.currentUser.username}
+			</Typography>
+            <Typography
+				color="white"
+				variant="body1"
+				align="center"
+				style={{ width: "50%" }}>
+				Games played:{props.currentUser.gamesPlayed}
+			</Typography>
+            <Typography
+				color="white"
+				variant="body1"
+				align="center"
+				style={{ width: "50%" }}>
+				Wins:{props.currentUser.numberOfWins}
 			</Typography>
 		</div>
 	)

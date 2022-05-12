@@ -135,8 +135,6 @@ export default function GameBoardView(props) {
 
     return (
         <Container>
-            <Typography color="primary" variant="h1" align="center">{props.model.found ? "GG FDP" : ""}</Typography>
-            <Typography color="primary" variant="body1" align="center">Target city: {props.model.target? props.model.target.name + ", " + props.model.target.country : "no data"}</Typography>
             <Typography color="primary" variant="body1" align="center">Remaining guesses: {props.model.remainingGuesses}</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
