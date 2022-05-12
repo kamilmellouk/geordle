@@ -30,7 +30,10 @@ export async function setUserInfo(model) {
             numberOfWins: wins,
             score: score,
             }));
-        //   res.json(status);
+        
+        if(!status.exists()) {
+            console.log("error")
+        }
     }
 
 }

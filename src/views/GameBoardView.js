@@ -5,7 +5,7 @@ import { distance, getColor, maxDistance, maxDiffPop } from "../utilities"
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
 
-import { Container, Paper, TableRow, TableHead, TableContainer, TableCell, TableBody, Table, Typography } from '@mui/material';
+import { Container, Paper, TableRow, TableHead, TableContainer, TableCell, TableBody, Table, Typography, Button } from '@mui/material';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -71,6 +71,9 @@ export default function GameBoardView(props) {
         )
     }
 
+    var found = false
+    var lost = false
+
     function guessRowCB(guess) {
         if (!guess) return
         var direction = ""
@@ -85,6 +88,15 @@ export default function GameBoardView(props) {
         } else {
             direction += "W"
         }
+
+        if (guess.wikiDataId === props.model.target.wikiDataId) {
+            found = true
+        }
+
+        if ((props.model.remainingGuesses <= 0)&&(guess.wikiDataId !== props.model.target.wikiDataId)) {
+            lost = true
+        }
+
 
         var dist = distance(
             guess.longitude,
@@ -154,6 +166,22 @@ export default function GameBoardView(props) {
                     </TableBody>
                 </Table>
             </TableContainer>
+            {found ? (
+                <div align="center">
+                    <Typography color="primary" variant="body1" align="center">You found the right city! You can now check your updated stats on your profile page</Typography>
+                    <Button variant="contained" onClick={props.refreshPage}>New Game</Button>
+                </div>
+            ) : (
+                <div></div>
+            )}
+            {lost ? (
+                <div align="center">
+                    <Typography color="primary" variant="body1" align="center">You lost! The mystery city was {props.model.target.name + ", " + props.model.target.country}</Typography>
+                    <Button variant="contained" onClick={props.refreshPage}>New Game</Button>
+                </div>
+            ) : (
+                <div></div>
+            )}
         </Container>
     )
 }

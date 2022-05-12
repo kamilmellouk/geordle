@@ -37,10 +37,16 @@ export default function Game(props) {
         props.model.addGuess(guess.data)
     }
 
+    function refreshPageACB() {
+        window.location.reload(false);
+        window.location.hash = "#game"
+    }
+
     const [guessName, setGuessName] = React.useState("")
     function setGuessNameACB(name) {
         setGuessName(name)
     }
+
 
     return (
         <div>
@@ -50,7 +56,7 @@ export default function Game(props) {
                 guessACB={addGuessACB}
                 guessNameACB={setGuessNameACB}
             />
-            <GameBoardView model={props.model} />
+            <GameBoardView model={props.model} refreshPage={refreshPageACB}/>
             <br />
             <MapView model={props.model} />
         </div>

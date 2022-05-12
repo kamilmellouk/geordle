@@ -8,7 +8,6 @@ export default function resolvePromise(promise, promiseState, notifyACB){
 
     function saveDataACB(result){ 
         if(promiseState.promise !== promise) return;
-        console.log("result", result)
         promiseState.data = result; 
         if(notifyACB) notifyACB();
     } 

@@ -10,10 +10,6 @@ export default function Profile(props) {
 		getUserInfo().then((data) => setUser(data))
 	}, [])
 
-	useEffect(() => {
-		console.log(user)
-	}, [user])
-
 	if (!user) return null
 
 	return <ProfileView model={props.model} currentUser={user}/>

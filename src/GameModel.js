@@ -11,7 +11,7 @@ class GameModel {
     constructor() {
         this.observers = []
 
-        this.nrOfGuesses = 10
+        this.nrOfGuesses = 3
         this.remainingGuesses = this.nrOfGuesses
         this.guesses = [] // contains city guesses
         this.currentGuessPromiseState = {}
