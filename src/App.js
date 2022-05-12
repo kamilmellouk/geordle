@@ -62,7 +62,7 @@ const App = () => {
                 )
                 }
                 <Show hash="#login">
-                    <Login model={model} />
+                    <Login model={model} loggedIn={isLoggedin} />
                 </Show>
                 <Show hash="#register">
                     <Register model={model} />

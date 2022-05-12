@@ -31,8 +31,8 @@ export async function setUserInfo(model) {
             score: score,
             }));
         
-        if(!status.exists()) {
-            console.log("error")
+        if(!status) {
+            // do nothing
         }
     }
 

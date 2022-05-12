@@ -12,6 +12,12 @@ function Login(props) {
 
     const [ , setUser] = React.useState({})
 
+    React.useEffect(() => {
+        if(props.loggedIn) {
+            window.location.hash = "#game"
+        }
+    },[props.loggedIn])
+
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser)
     })

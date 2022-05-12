@@ -11,7 +11,7 @@ class GameModel {
     constructor() {
         this.observers = []
 
-        this.nrOfGuesses = 3
+        this.nrOfGuesses = 8
         this.remainingGuesses = this.nrOfGuesses
         this.guesses = [] // contains city guesses
         this.currentGuessPromiseState = {}
@@ -24,6 +24,12 @@ class GameModel {
     }
 
     addGuess(city) {
+        function isCityInGuessesCB(c){
+            return c.id === city.id;
+        }
+
+        if(!this.guesses || this.guesses.find(isCityInGuessesCB)) return
+
         if (this.remainingGuesses > 0) {
             this.remainingGuesses -= 1
             this.guesses = [...this.guesses, city]
