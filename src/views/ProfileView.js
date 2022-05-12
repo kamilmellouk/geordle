@@ -35,23 +35,17 @@ import { getUserInfo } from "../firebaseModel"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 export default function ProfileView(props) {
-    console.log(props.currentUser)
-
-    return (
-        <div>
-            <BannerView />
-            <div>{props.currentUser}</div>
-            <br />
-            <Typography
-                color="white"
-                variant="body1"
-                align="center"
-                style={{ width: "50%" }}
-            >
-                The goal of this game is to find a mystery city using a limited
-                number of guesses. Each new guess you make gives information on
-                how the city you guessed compares to the one you need to find.
-            </Typography>
-        </div>
-    )
+	return (
+		<div>
+			<BannerView />
+			<br />
+			<Typography
+				color="white"
+				variant="body1"
+				align="center"
+				style={{ width: "50%" }}>
+				{props.currentUser.username}
+			</Typography>
+		</div>
+	)
 }

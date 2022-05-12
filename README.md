@@ -62,6 +62,7 @@ firebase deploy
 * `citySource.js` provides functions that make API calls.
 * `utilities.js` provides some utility functions.
 * `data.json` contains local city data (initially fetched from the API) used for prototyping.
+* `known_cities.js` contains a the list of cities to guess from.
 * `views/` contains views for the game board and the guess form.
 * `reactjs/` contains the presenter for the game board.
 
