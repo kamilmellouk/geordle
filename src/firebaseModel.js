@@ -30,10 +30,6 @@ export async function setUserInfo(model) {
             numberOfWins: wins,
             score: score,
             }));
-        
-        if(!status) {
-            // do nothing
-        }
     }
 
 }
